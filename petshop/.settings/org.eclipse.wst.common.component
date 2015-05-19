@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="petshop">
+        <wb-resource deploy-path="/" source-path="/ejbModule" tag="defaultRootSource"/>
+        <property name="java-output-path" value="/petshop/build/classes"/>
+        <property name="ClientProject" value="petshopClient"/>
+        <property name="ClientJARURI" value="petshopClient.jar"/>
+    </wb-module>
+</project-modules>
