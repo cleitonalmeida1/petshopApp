@@ -1,0 +1,20 @@
+body{
+	font-size: 11px
+}
+
+.cabecalho{
+	border: none
+}
+
+.menu{
+	border: none
+}
+
+.conteudo{
+	border: none
+}
+
+.rodape{
+	border: none;
+	text-align: center
+}

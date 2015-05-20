@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	template="/WEB-INF/template/template-principal.xhtml">
+
+	<ui:define name="conteudo">
+		<p:panel header="Cadastro Cliente" footer="Eng Web II"
+			toggleable="true">
+			<h:form>
+				<h:panelGrid columns="2" cellpadding="5">
+					<h:outputLabel value="Nome" />
+					<p:inputText value="#{cadastroClienteMB.cliente.nomeRazaosocial}" />
+					
+					<h:outputLabel value="CPF" />
+					<p:inputMask mask="999.999.999-99" value="#{cadastroClienteMB.cliente.cpfCnpj}"/>
+					
+					<h:outputLabel value="email" />
+					<p:inputText value="#{cadastroClienteMB.cliente.email}" />
+					
+					<p:commandButton value="Cancelar" 
+										action="#{cadastroClienteMB.cancelar()}" 
+										immediate="true" 
+										icon="ui-icon-cancel"></p:commandButton>
+					<p:commandButton value="Salvar" 
+										action="#{cadastroClienteMB.salvar}" 
+										ajax="true" 
+										icon="ui-icon-check"></p:commandButton>
+				</h:panelGrid>
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>

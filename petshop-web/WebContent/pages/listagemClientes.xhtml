@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/template-principal.xhtml">
+
+	<ui:define name="conteudo">
+		<p:panel header="Clientes" footer="Listagem de Clientes"
+			toggleable="true" >
+			<h:form>
+				<h:panelGrid columns="1" cellpadding="10" >
+					<p:commandButton value="Novo" icon="ui-icon-plus" action="cadastroCliente?faces-redirect=true"></p:commandButton>
+					
+					<p:dataTable rendered="#{listagemClientesMB.mostrarTabela}" id="tabela" var="cliente" value="#{listagemClientesMB.clientes}" resizableColumns="true" >
+						<p:column headerText="Id" width="10%" >
+							<h:outputText value="#{cliente.id}" />
+						</p:column>
+						<p:column headerText="Nome" width="50%">
+							<h:outputText value="#{cliente.nomeRazaosocial}" />
+						</p:column>
+						<p:column headerText="CPF" width="20%">
+							<h:outputText value="#{cliente.cpfCnpj}" />
+						</p:column>
+						<p:column headerText="Renda Mensal" width="10%">
+							<h:outputText value="#{cliente.email}" >
+							</h:outputText>
+						</p:column>
+						<p:column width="10%">
+							<p:commandButton action="#{listagemClientesMB.editar()}" icon="ui-icon-pencil">
+								<f:setPropertyActionListener value="#{cliente}" target="#{cadastroClienteMB.cliente}">
+								</f:setPropertyActionListener>
+							</p:commandButton>
+							<p:commandButton actionListener="#{listagemClientesMB.remover(cliente)}" icon="ui-icon-trash" update="tabela">
+							
+							</p:commandButton>
+						</p:column>
+					</p:dataTable>
+				</h:panelGrid>
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>
