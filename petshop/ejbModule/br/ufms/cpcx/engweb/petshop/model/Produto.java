@@ -2,12 +2,12 @@ package br.ufms.cpcx.engweb.petshop.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -46,12 +46,10 @@ public class Produto implements Serializable {
     private String marca;
     
     //id categoria
-    @JoinColumn(name = "id_categoria", referencedColumnName = "id", nullable = false)
 	@OneToOne(optional = false)
     private Categoria Categoria;
     
     //id fornecedor
-    @JoinColumn(name = "id_fornecedor", referencedColumnName = "id", nullable = false)
 	@OneToOne(optional = false)
     private Fornecedor Fornecedor;
     

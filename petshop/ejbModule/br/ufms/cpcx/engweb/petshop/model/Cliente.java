@@ -1,6 +1,7 @@
 package br.ufms.cpcx.engweb.petshop.model;
 
 import java.io.Serializable;
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -10,13 +11,11 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import br.ufms.cpcx.engweb.petshop.model.enuns.TipoPessoaEnum;
@@ -49,8 +48,8 @@ public class Cliente implements Serializable {
 	@Column(name = "email", length = 40)
 	private String email;
 
-	@NotNull
-	@Column(name = "datanascimento", nullable = false)
+	
+	@Column(name = "datanascimento")
 	@Temporal(TemporalType.DATE)
 	private Date datanascimento;
 
@@ -59,16 +58,16 @@ public class Cliente implements Serializable {
 	private String sexo;
 
 	// telefone
-	@JoinColumn(name = "id_telefone", referencedColumnName = "id", nullable = false)
-	@OneToOne(optional = false)
-	private Telefone Telefone;
+	
+	@OneToOne
+	private Telefone telefone;
 	// endereço
-	@JoinColumn(name = "id_endereco", referencedColumnName = "id", nullable = false)
-	@OneToOne(optional = false)
-	private Endereco Endereco;
+	
+	@OneToOne
+	private Endereco endereco;
 	// tipo pessoa
+	
 	@Enumerated(EnumType.STRING)
-	@NotNull
 	private TipoPessoaEnum tipoPessoa;
 
 	public Cliente() {
@@ -136,19 +135,19 @@ public class Cliente implements Serializable {
 	}
 
 	public Telefone getTelefone() {
-		return Telefone;
+		return telefone;
 	}
 
 	public void setTelefone(Telefone telefone) {
-		Telefone = telefone;
+		this.telefone = telefone;
 	}
 
 	public Endereco getEndereco() {
-		return Endereco;
+		return endereco;
 	}
 
 	public void setEndereco(Endereco endereco) {
-		Endereco = endereco;
+		this.endereco = endereco;
 	}
 
 	public TipoPessoaEnum getTipoPessoa() {

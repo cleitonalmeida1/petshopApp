@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -31,11 +30,9 @@ public class Venda implements Serializable {
 	
 	
 	 //cliente
-    @JoinColumn(name = "id_cliente", referencedColumnName = "id", nullable = false)
 	@OneToOne(optional = false)
 	private Cliente Cliente;
     //vendedor
-    @JoinColumn(name = "id_vendedor", referencedColumnName = "id", nullable = false)
     @OneToOne(optional = false)
     private Funcionario Vendedor;
 	

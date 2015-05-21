@@ -2,12 +2,12 @@ package br.ufms.cpcx.engweb.petshop.model;
 
 import java.io.Serializable;
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -61,11 +61,9 @@ public class Funcionario implements Serializable {
     private String sexo;
     
     //telefone
-    @JoinColumn(name = "id_telefone", referencedColumnName = "id", nullable = false)
 	@OneToOne(optional = false)
 	private Telefone Telefone;
     //endereço
-    @JoinColumn(name = "id_endereco", referencedColumnName = "id", nullable = false)
     @OneToOne(optional = false)
     private Endereco Endereco;
    

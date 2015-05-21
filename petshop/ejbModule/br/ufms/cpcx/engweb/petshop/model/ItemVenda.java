@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -28,11 +27,9 @@ public class ItemVenda implements Serializable {
 	
 	
 	 //venda
-    @JoinColumn(name = "id_venda", referencedColumnName = "id", nullable = false)
 	@OneToOne(optional = false)
 	private Venda idVenda;
     //produto
-    @JoinColumn(name = "id_produto", referencedColumnName = "id", nullable = false)
     @OneToOne(optional = false)
     private Produto idProduto;
     
@@ -42,9 +39,6 @@ public class ItemVenda implements Serializable {
     @Column(name = "valor_unitario", precision = 10, scale = 2)
     private BigDecimal valorUnitario;
     
-    
-	
-   
     
     public ItemVenda() {
     }

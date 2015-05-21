@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -18,7 +17,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "tb_cliente")
+@Table(name = "tb_animal")
 public class Animal implements Serializable {
 
 	private static final long serialVersionUID = -3052883518527417260L;
@@ -46,7 +45,7 @@ public class Animal implements Serializable {
     private String cor;
     
     @NotNull
-    @Column(name = "datanascimento", nullable = false)
+    @Column(name = "datanascimento")
     @Temporal(TemporalType.DATE)
     private Date datanascimento;
     
@@ -55,7 +54,6 @@ public class Animal implements Serializable {
     private String sexo;
     
     //telefone
-    @JoinColumn(name = "id_cliente", referencedColumnName = "id", nullable = false)
 	@OneToOne(optional = false)
 	private Telefone cliente;
 
