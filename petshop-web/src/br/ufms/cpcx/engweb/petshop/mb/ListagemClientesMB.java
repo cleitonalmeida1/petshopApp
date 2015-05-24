@@ -16,7 +16,7 @@ public class ListagemClientesMB {
 	private List<Cliente> clientes;
 	private boolean mostrarTabela = true;
 	private Long idCliente;
-
+//
 	@EJB
 	private CadastroCliente cadastroCliente;
 	
