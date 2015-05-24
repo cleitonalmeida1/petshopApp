@@ -16,6 +16,7 @@ import br.ufms.cpcx.engweb.petshop.model.Cliente;
 @Named("cadastroClienteMB")
 @ConversationScoped
 public class CadastroClienteMB implements Serializable {
+	//teste
 	/**
 	 * 
 	 */
