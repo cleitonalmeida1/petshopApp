@@ -5,9 +5,6 @@
             <dependent-object/>
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="petshopClient.jar" deploy-path="/" handle="module:/resource/petshopClient/petshopClient">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module archiveName="petshop-web.war" deploy-path="/" handle="module:/resource/petshop-web/petshop-web">
             <dependent-object/>
             <dependency-type>uses</dependency-type>

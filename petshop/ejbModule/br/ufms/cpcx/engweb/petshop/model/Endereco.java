@@ -2,7 +2,6 @@ package br.ufms.cpcx.engweb.petshop.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -12,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import br.ufms.cpcx.engweb.petshop.model.enuns.TipoEnderecoEnum;
 
@@ -25,28 +23,12 @@ public class Endereco implements Serializable {
 	@Id
 	@SequenceGenerator(name = "endereco_seq_gen", sequenceName = "endereco_seq", initialValue = 1, allocationSize = 1)
 	@GeneratedValue(generator = "endereco_seq_gen", strategy = GenerationType.SEQUENCE)
-	@Column(name = "id", nullable = false)
+	
 	private Long id;
-	
-	
-    @Size(max = 100)
-    @Column(name = "logradouro", length = 100)
     private String logradouro;
-    
-   
-    @Size(max = 80)
-    @Column(name = "bairro", length = 80)
     private String bairro;
-    
-    @Column(name = "numero")
     private Integer número;
-    
-    @Size(max = 30)
-    @Column(name = "complemento", length = 30)
     private String complemento;
-    
-    @Size(max = 10)
-    @Column(name = "cep", length = 10)
     private String cep;
     
   //tipo endereo

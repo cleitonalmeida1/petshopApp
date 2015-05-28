@@ -1,7 +1,6 @@
 package br.ufms.cpcx.engweb.petshop.model;
 
 import java.io.Serializable;
-
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -14,9 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.Size;
 
 import br.ufms.cpcx.engweb.petshop.model.enuns.TipoPessoaEnum;
 
@@ -32,29 +28,11 @@ public class Cliente implements Serializable {
 	@Column(name = "id", nullable = false)
 	private Long id;
 
-	@Size(max = 100)
-	@Column(name = "nome_razaosocial", length = 100)
 	private String nomeRazaosocial;
-
-	@Size(max = 15)
-	@Column(name = "cpf_cnpj", length = 15)
 	private String cpfCnpj;
-
-	@Size(max = 15)
-	@Column(name = "rg_ie", length = 15)
 	private String rgIe;
-
-	@Size(max = 40)
-	@Column(name = "email", length = 40)
 	private String email;
-
-	
-	@Column(name = "datanascimento")
-	@Temporal(TemporalType.DATE)
 	private Date datanascimento;
-
-	@Size(max = 1)
-	@Column(name = "sexo", length = 1)
 	private String sexo;
 
 	// telefone

@@ -3,7 +3,6 @@ package br.ufms.cpcx.engweb.petshop.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,10 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "tb_funcionario")
@@ -25,39 +21,17 @@ public class Funcionario implements Serializable {
 	@Id
 	@SequenceGenerator(name = "funcionario_seq_gen", sequenceName = "funcionario_seq", initialValue = 1, allocationSize = 1)
 	@GeneratedValue(generator = "funcionario_seq_gen", strategy = GenerationType.SEQUENCE)
-	@Column(name = "id", nullable = false)
-	private Long id;
 	
-    @Size(max = 100)
-    @Column(name = "nome", length = 100)
+	private Long id;
     private String nome;
-    
-    @Size(max = 15)
-    @Column(name = "cpf", length = 15)
     private String cpf;
-    
-    @Size(max = 15)
-    @Column(name = "rg", length = 15)
     private String rg;
-    
-    @Size(max = 40)
-    @Column(name = "email", length = 40)
     private String email;
-    
-    @Size(max = 40)
-    @Column(name = "cargo", length = 40)
     private String cargo;
-    
-    @Column(name = "salario", length = 40)
     private double salario;
     
     @NotNull
-    @Column(name = "datanascimento", nullable = false)
-    @Temporal(TemporalType.DATE)
     private Date datanascimento;
-    
-    @Size(max = 1)
-    @Column(name = "sexo", length = 1)
     private String sexo;
     
     //telefone

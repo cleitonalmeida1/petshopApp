@@ -4,7 +4,6 @@
 	<comment></comment>
 	<projects>
 		<project>petshop</project>
-		<project>petshopClient</project>
 		<project>petshop-web</project>
 	</projects>
 	<buildSpec>

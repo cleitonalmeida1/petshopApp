@@ -11,10 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "tb_animal")
@@ -28,35 +24,15 @@ public class Animal implements Serializable {
 	@Column(name = "id", nullable = false)
 	private Long id;
 	
-    @Size(max = 100)
-    @Column(name = "nome", length = 100)
     private String nome;
-    
-    @Size(max = 15)
-    @Column(name = "raca", length = 15)
     private String raca;
-    
-    
-    @Column(name = "peso", length = 40)
     private double peso;
-    
-    @Size(max = 15)
-    @Column(name = "cor", length = 40)
     private String cor;
-    
-    @NotNull
-    @Column(name = "datanascimento")
-    @Temporal(TemporalType.DATE)
     private Date datanascimento;
-    
-    @Size(max = 1)
-    @Column(name = "sexo", length = 1)
     private String sexo;
+    @OneToOne
+    private Foto foto;
     
-    //telefone
-	@OneToOne(optional = false)
-	private Telefone cliente;
-
     public Animal(){
     	
     }
@@ -64,6 +40,14 @@ public class Animal implements Serializable {
     public Animal(Long id) {
         this.id = id;
     }
+
+	public Foto getFoto() {
+		return foto;
+	}
+
+	public void setFoto(Foto foto) {
+		this.foto = foto;
+	}
 
 	public Long getId() {
 		return id;
@@ -121,15 +105,5 @@ public class Animal implements Serializable {
 		this.sexo = sexo;
 	}
 
-	public Telefone getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Telefone cliente) {
-		this.cliente = cliente;
-	}
-
-	    
-    
 }
 

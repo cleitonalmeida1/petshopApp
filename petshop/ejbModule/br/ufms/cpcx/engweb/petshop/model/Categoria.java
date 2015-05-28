@@ -2,14 +2,12 @@ package br.ufms.cpcx.engweb.petshop.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "tb_categoria")
@@ -20,15 +18,9 @@ public class Categoria implements Serializable{
 	@Id
 	@SequenceGenerator(name = "categoria_seq_gen", sequenceName = "categoria_seq", initialValue = 1, allocationSize = 1)
 	@GeneratedValue(generator = "categoria_seq_gen", strategy = GenerationType.SEQUENCE)
-	@Column(name = "id", nullable = false)
+
 	private Long id;
-	
-    @Size(max = 100)
-    @Column(name = "nome", length = 100)
     private String nome;
-    
-    @Size(max = 250)
-    @Column(name = "descricao", length = 250)
     private String descricao;
 
     public Categoria() {

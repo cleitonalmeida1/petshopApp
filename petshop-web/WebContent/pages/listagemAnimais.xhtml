@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/template-principal.xhtml">
+
+	<ui:define name="conteudo">
+		<p:panel header="Animais" footer="Listagem de Animais"
+			toggleable="true">
+			<h:form>
+				<h:panelGrid columns="1" cellpadding="10" >
+					<p:commandButton value="Novo" icon="ui-icon-plus" action="cadastroAnimal?faces-redirect=true"></p:commandButton>
+					
+					<p:dataTable rendered="#{listagemAnimaisMB.mostrarTabela}" id="tabela" var="animal" value="#{listagemAnimaisMB.animais}" resizableColumns="true" >
+						<p:column headerText="Id" width="5%" >
+							<h:outputText value="#{animal.id}" />
+						</p:column>
+						<p:column headerText="Nome" width="10%">
+							<h:outputText value="#{animal.nome}" />
+						</p:column>
+						<p:column headerText="Raca" width="20%">
+							<h:outputText value="#{animal.raca}" />
+						</p:column>
+						<p:column headerText="Cor" width="20%">
+							<h:outputText value="#{animal.cor}" >
+							</h:outputText>
+						</p:column>
+						<p:column headerText="Peso" width="10%">
+							<h:outputText value="#{animal.peso}" >
+							</h:outputText>
+						</p:column>
+						<p:column headerText="Sexo" width="5%">
+							<h:outputText value="#{animal.sexo}" >
+							</h:outputText>
+						</p:column>
+						
+						<p:column headerText="Foto" width="20%">
+							<p:graphicImage value="#{imagemMB.image}"  cache="false">
+								<f:param name="fotoId"
+									value="#{(animal.foto!=null?animal.foto.id:null)}" />
+							</p:graphicImage>
+						</p:column>
+						
+						<p:column width="10%">
+							<p:commandButton action="#{listagemAnimaisMB.editar()}" icon="ui-icon-pencil">
+								<f:setPropertyActionListener value="#{animal}" target="#{cadastroAnimalMB.animal}">
+								</f:setPropertyActionListener>
+							</p:commandButton>
+							<p:commandButton actionListener="#{listagemAnimaisMB.remover(animal)}" icon="ui-icon-trash" update="tabela">
+							
+							</p:commandButton>
+						</p:column>
+					</p:dataTable>
+				</h:panelGrid>
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>

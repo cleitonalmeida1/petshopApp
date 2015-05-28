@@ -5,13 +5,18 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui">
 
+
 	<ui:composition>
 	 	<p:menu>
 	 		<p:submenu label="Petshop">
 	 			<p:menuitem value="Home" outcome="index" icon="ui-icon-home" ></p:menuitem>
 	 		</p:submenu>
 	 		<p:submenu label="Cadastros">
-	 			<p:menuitem value="Clientes" outcome="listagemClientes" icon="ui-icon-document">
+	 			<p:menuitem value="Cliente" outcome="listagemClientes" >
+	 			</p:menuitem>
+	 			<p:menuitem value="Animal" outcome="listagemAnimais" >
+	 			</p:menuitem>
+	 			<p:menuitem value="Teste" outcome="teste" >
 	 			</p:menuitem>
 	 		</p:submenu>
 	 	</p:menu>

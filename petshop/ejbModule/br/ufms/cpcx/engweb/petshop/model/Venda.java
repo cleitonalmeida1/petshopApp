@@ -25,10 +25,8 @@ public class Venda implements Serializable {
 	@Id
 	@SequenceGenerator(name = "venda_seq_gen", sequenceName = "venda_seq", initialValue = 1, allocationSize = 1)
 	@GeneratedValue(generator = "venda_seq_gen", strategy = GenerationType.SEQUENCE)
-	@Column(name = "id", nullable = false)
+	
 	private Long id;
-	
-	
 	 //cliente
 	@OneToOne(optional = false)
 	private Cliente Cliente;
