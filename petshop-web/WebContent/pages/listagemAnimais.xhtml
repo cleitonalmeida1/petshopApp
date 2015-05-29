@@ -14,41 +14,41 @@
 					<p:commandButton value="Novo" icon="ui-icon-plus" action="cadastroAnimal?faces-redirect=true"></p:commandButton>
 					
 					<p:dataTable rendered="#{listagemAnimaisMB.mostrarTabela}" id="tabela" var="animal" value="#{listagemAnimaisMB.animais}" resizableColumns="true" >
-						<p:column headerText="Id" width="5%" >
-							<h:outputText value="#{animal.id}" />
+						<p:column headerText="Id" width="5%" styleClass="coluna">
+							<h:outputText value="#{animal.id}"/>
 						</p:column>
-						<p:column headerText="Nome" width="10%">
+						<p:column headerText="Nome" width="10%" styleClass="coluna">
 							<h:outputText value="#{animal.nome}" />
 						</p:column>
-						<p:column headerText="Raca" width="20%">
+						<p:column headerText="Raca" width="20%" styleClass="coluna">
 							<h:outputText value="#{animal.raca}" />
 						</p:column>
-						<p:column headerText="Cor" width="20%">
+						<p:column headerText="Cor" width="20%" styleClass="coluna">
 							<h:outputText value="#{animal.cor}" >
 							</h:outputText>
 						</p:column>
-						<p:column headerText="Peso" width="10%">
+						<p:column headerText="Peso" width="10%" styleClass="coluna">
 							<h:outputText value="#{animal.peso}" >
 							</h:outputText>
 						</p:column>
-						<p:column headerText="Sexo" width="5%">
+						<p:column headerText="Sexo" width="5%" styleClass="coluna">
 							<h:outputText value="#{animal.sexo}" >
 							</h:outputText>
 						</p:column>
 						
-						<p:column headerText="Foto" width="20%">
-							<p:graphicImage value="#{imagemMB.image}"  cache="false">
+						<p:column headerText="Foto"  styleClass="coluna">
+							<p:graphicImage value="#{imagemMB.image}"  cache="false" height="50">
 								<f:param name="fotoId"
 									value="#{(animal.foto!=null?animal.foto.id:null)}" />
 							</p:graphicImage>
 						</p:column>
 						
 						<p:column width="10%">
-							<p:commandButton action="#{listagemAnimaisMB.editar()}" icon="ui-icon-pencil">
+							<p:commandButton action="#{listagemAnimaisMB.editar()}" icon="ui-icon-pencil" styleClass="coluna">
 								<f:setPropertyActionListener value="#{animal}" target="#{cadastroAnimalMB.animal}">
 								</f:setPropertyActionListener>
 							</p:commandButton>
-							<p:commandButton actionListener="#{listagemAnimaisMB.remover(animal)}" icon="ui-icon-trash" update="tabela">
+							<p:commandButton actionListener="#{listagemAnimaisMB.remover(animal)}" icon="ui-icon-trash" update="tabela" styleClass="coluna">
 							
 							</p:commandButton>
 						</p:column>

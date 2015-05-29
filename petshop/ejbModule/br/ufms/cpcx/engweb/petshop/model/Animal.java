@@ -32,6 +32,8 @@ public class Animal implements Serializable {
     private String sexo;
     @OneToOne
     private Foto foto;
+    @OneToOne
+    private Cliente cliente;
     
     public Animal(){
     	

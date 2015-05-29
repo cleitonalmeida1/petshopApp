@@ -1,15 +1,15 @@
-package br.ufms.cpcx.engweb.petshop.mb.listagem;
+package br.ufms.cpcx.engweb.petshop.mb.cadastro;
 
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class UploadMB implements Serializable {
 	private static final long serialVersionUID = 1616539422376403150L;
 	private UploadedFile arquivo;

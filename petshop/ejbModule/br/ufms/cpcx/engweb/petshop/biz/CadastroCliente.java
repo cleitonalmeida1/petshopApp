@@ -27,6 +27,10 @@ public class CadastroCliente {
 		return clienteDAO.listAll();
 	}
 
+	public List<String> listarNomesClientes() {
+		return clienteDAO.listarTodosNomes();
+	}
+	
 	public void removerCliente(Cliente cliente) {
 		clienteDAO.removerCliente(cliente.getId());
 	}

@@ -31,6 +31,12 @@ public class ClienteDAO {
 		Query query = em.createQuery("SELECT c FROM Cliente c");
 		return (List<Cliente>) query.getResultList();
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<String> listarTodosNomes() {
+		Query query = em.createQuery("SELECT nome FROM Cliente c");
+		return (List<String>) query.getResultList();
+	}
 
 	
 	public Cliente findById(Long id) {

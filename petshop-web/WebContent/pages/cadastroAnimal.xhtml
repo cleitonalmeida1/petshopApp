@@ -11,14 +11,13 @@
 		<p:panel header="Cadastro de Animal" footer="Petshop"
 			toggleable="true">
 			<h:form>
-				<h:panelGrid columns="3" cellpadding="5">
+				<h:panelGrid columns="4" cellpadding="5">
 					<h:panelGrid columns="2" cellpadding="2" style="">
 						<h:outputLabel value="Nome" />
 						<p:inputText value="#{cadastroAnimalMB.animal.nome}" />
 
 						<h:outputLabel value="Raça" />
 						<p:inputText value="#{cadastroAnimalMB.animal.raca}" />
-
 
 						<h:outputLabel value="Cor" />
 						<p:inputText value="#{cadastroAnimalMB.animal.cor}" />
@@ -27,7 +26,7 @@
 							action="#{cadastroAnimalMB.cancelar()}" immediate="true"
 							icon="ui-icon-cancel"></p:commandButton>
 						<p:commandButton value="Salvar"
-							action="#{cadastroAnimalMB.salvar(UploadMB.arquivo)}"
+							action="#{cadastroAnimalMB.salvar(uploadMB.arquivo)}"
 							ajax="false" icon="ui-icon-check"></p:commandButton>
 
 						<h:outputLabel value="" />
@@ -47,29 +46,24 @@
 							<f:selectItem itemLabel="Feminino" itemValue="F" />
 							<f:selectItem itemLabel="Masculino" itemValue="M" />
 						</p:selectOneRadio>
-
-						<h:outputLabel value="" />
-						<h:outputLabel value="" />
 					</h:panelGrid>
+					<h:form>
+						<p:panel header="Imagem" footer="Foto do pet" toggleable="true">
+							<h:panelGrid columns="1" cellpadding="5">
+								<p:fileUpload fileUploadListener="#{uploadMB.handleFileUpload}"
+									mode="advanced" dragDropSupport="true" sizeLimit="100000"
+									fileLimit="1" allowTypes="/(\.|\/)(gif|jpe?g|png)$/">
+								</p:fileUpload>
 
-						<h:form>
-							<p:panel header="Imagem" footer="Foto do pet" toggleable="true">
-								<h:panelGrid columns="1" cellpadding="5">
-									<p:fileUpload fileUploadListener="#{uploadMB.handleFileUpload}"
-										mode="advanced" dragDropSupport="true" sizeLimit="100000"
-										fileLimit="1" allowTypes="/(\.|\/)(gif|jpe?g|png)$/">
-									</p:fileUpload>
+								<p:graphicImage height="40%" value="#{imagemMB.image}" id="foto"
+									cache="false">
+									<f:param name="fotoId"
+										value="#{(cadastroAnimalMB.animal.foto!=null?cadastroAnimalMB.animal.foto.id:null)}" />
+								</p:graphicImage>
 
-									<p:graphicImage value="#{imagemMB.image}" id="foto"
-										cache="false">
-										<f:param name="fotoId"
-											value="#{(cadastroAnimalMB.animal.foto!=null?cadastroAnimalMB.animal.foto.id:null)}" />
-									</p:graphicImage>
-								</h:panelGrid>
-							</p:panel>
-						</h:form>
-
-
+							</h:panelGrid>
+						</p:panel>
+					</h:form>
 				</h:panelGrid>
 			</h:form>
 		</p:panel>
