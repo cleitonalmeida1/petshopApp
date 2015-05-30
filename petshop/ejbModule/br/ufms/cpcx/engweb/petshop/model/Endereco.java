@@ -8,6 +8,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -30,6 +31,9 @@ public class Endereco implements Serializable {
     private Integer número;
     private String complemento;
     private String cep;
+    @OneToOne
+    private Cidade cidade;
+    private String estado;
     
   //tipo endereo
     @Enumerated(EnumType.STRING)
@@ -94,6 +98,32 @@ public class Endereco implements Serializable {
     public void setCep(String cep) {
         this.cep = cep;
     }
+
+	public Cidade getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public TipoEnderecoEnum getTipoEndereco() {
+		return tipoEndereco;
+	}
+
+	public void setTipoEndereco(TipoEnderecoEnum tipoEndereco) {
+		this.tipoEndereco = tipoEndereco;
+	}
+    
+    
     
 }
 

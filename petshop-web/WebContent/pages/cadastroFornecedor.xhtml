@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	template="/WEB-INF/template/template-principal.xhtml">
+
+	<ui:define name="conteudo">
+		<p:panel header="Cadastro Fornecedor" footer="Petshop"
+			toggleable="true">
+			<h:form>
+				<h:panelGrid columns="2" cellpadding="5">
+					<h:outputLabel value="Razão Social" />
+					<p:inputText value="#{cadastroFornecedorMB.fornecedor.nome}" />
+					
+					<h:outputLabel value="CNPJ" />
+					<p:inputMask mask="99.999/9999-99" value="#{cadastroFornecedorMB.fornecedor.cnpj}"/>
+					
+					<h:outputLabel value="Inscrição Estadual" />
+					<p:inputText mask="999.999.999.999" value="#{cadastroFornecedorMB.fornecedor.ie}" />
+										
+					<h:outputLabel value="Telefone" />
+					<p:inputText mask="(999) 999-9999" value="#{cadastroFornecedorMB.fornecedor.telefone}" />
+					
+					<h:outputLabel value="Email" />
+					<p:inputText value="#{cadastroFornecedorMB.fornecedor.email}" />
+				</h:panelGrid>	
+				
+			<p:fieldset legend="Endereço" style="margin-bottom:20px">	
+				
+				<h:panelGrid columns="2" cellpadding="5">	
+					<h:outputLabel value="Logradouro" />
+					<p:inputText value="" />
+					
+					<h:outputLabel value="Número" />
+					<p:inputText value="" />
+					
+					<h:outputLabel value="Bairro" />
+					<p:inputText value="" />
+					
+					<h:outputLabel value="Cidade" />
+					<p:inputText value="" />
+					
+					<h:outputLabel value="Estado" />
+					<p:inputText value="" />
+					
+					<h:outputLabel value="CEP" />
+					<p:inputText value="" />
+					
+										
+				</h:panelGrid>
+			</p:fieldset>
+			
+			<p:commandButton value="Salvar" 
+										action="#{cadastroFornecedorMB.salvar}" 
+										ajax="true" 
+										icon="ui-icon-check"></p:commandButton>
+					
+					<p:commandButton value="Cancelar" 
+										action="#{cadastroFornecedorMB.cancelar()}" 
+										immediate="true" 
+										icon="ui-icon-cancel"></p:commandButton>	
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>

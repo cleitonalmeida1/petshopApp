@@ -2,6 +2,7 @@ package br.ufms.cpcx.engweb.petshop.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "tb_fornecedor")
@@ -19,27 +21,39 @@ public class Fornecedor implements Serializable {
 	@Id
 	@SequenceGenerator(name = "fornecedor_seq_gen", sequenceName = "fornecedor_seq", initialValue = 1, allocationSize = 1)
 	@GeneratedValue(generator = "fornecedor_seq_gen", strategy = GenerationType.SEQUENCE)
-	
+	@Column(name = "id", nullable = false)
 	private Long id;
-    private String nome;
-    private String cnpj;
-    private String ie;
-    private String email;
-    
-    //telefone
+
+	@Size(max = 100)
+	@Column(name = "nome", length = 100)
+	private String nome;
+
+	@Size(max = 15)
+	@Column(name = "cnpj", length = 15)
+	private String cnpj;
+
+	@Size(max = 15)
+	@Column(name = "ie", length = 15)
+	private String ie;
+
+	@Size(max = 40)
+	@Column(name = "email", length = 40)
+	private String email;
+
+	@Size(max = 15)
+	@Column(name = "telefone", length = 15)
+	private String telefone;
+
 	@OneToOne(optional = false)
-	private Telefone Telefone;
-    //endereço
-    @OneToOne(optional = false)
-    private Endereco Endereco;    
+	private Endereco Endereco;
 
-    public Fornecedor() {
-    	
-    }
+	public Fornecedor() {
 
-    public Fornecedor(Long id) {
-        this.id = id;
-    }
+	}
+
+	public Fornecedor(Long id) {
+		this.id = id;
+	}
 
 	public Long getId() {
 		return id;
@@ -81,12 +95,12 @@ public class Fornecedor implements Serializable {
 		this.email = email;
 	}
 
-	public Telefone getTelefone() {
-		return Telefone;
+	public String getTelefone() {
+		return telefone;
 	}
 
-	public void setTelefone(Telefone telefone) {
-		Telefone = telefone;
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 
 	public Endereco getEndereco() {
@@ -96,7 +110,4 @@ public class Fornecedor implements Serializable {
 	public void setEndereco(Endereco endereco) {
 		Endereco = endereco;
 	}
-
-    
 }
-
