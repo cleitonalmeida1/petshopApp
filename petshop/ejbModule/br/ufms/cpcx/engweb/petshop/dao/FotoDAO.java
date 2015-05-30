@@ -12,9 +12,11 @@ import br.ufms.cpcx.engweb.petshop.model.Foto;
 
 @Stateless
 public class FotoDAO{
+	
 	@PersistenceContext
 	private EntityManager em;
 
+	
 	public Foto persist(Foto t) {
 		if (t.getId() != null) {
 			return em.merge(t);

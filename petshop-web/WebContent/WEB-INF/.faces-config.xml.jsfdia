@@ -11,10 +11,15 @@
     ID="cadastroCliente::#pages#cadastroCliente.xhtml" NAME="output4"
     PATH="/pages/cadastroCliente.xhtml"
     TARGET="rules:#pages#cadastroCliente.xhtml" TITLE="cadastroCliente" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="viewClientes::#pages#viewCliente.xhtml"
+    NAME="output1" PATH="/pages/viewCliente.xhtml"
+    TARGET="rules:#pages#viewCliente.xhtml" TITLE="viewClientes" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#pages#listagemClientes.xhtml"
   PATH="/pages/listagemClientes.xhtml" SHAPE="304,33,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#pages#cadastroCliente.xhtml"
   PATH="/pages/cadastroCliente.xhtml" SHAPE="304,641,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#viewCliente.xhtml"
+  PATH="/pages/viewCliente.xhtml" SHAPE="272,209,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

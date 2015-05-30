@@ -1,4 +1,4 @@
-package br.ufms.cpcx.engweb.petshop.mb.listagem;
+package br.ufms.cpcx.engweb.petshop.mb.cadastro;
 
 import java.util.List;
 
