@@ -15,7 +15,7 @@ public class FotoDAO{
 	
 	@PersistenceContext
 	private EntityManager em;
-
+	
 	
 	public Foto persist(Foto t) {
 		if (t.getId() != null) {
