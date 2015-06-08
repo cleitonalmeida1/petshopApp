@@ -2,6 +2,8 @@ package br.ufms.cpcx.engweb.petshop.mb.auxiliar;
 
 import java.io.Serializable;
 
+
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
