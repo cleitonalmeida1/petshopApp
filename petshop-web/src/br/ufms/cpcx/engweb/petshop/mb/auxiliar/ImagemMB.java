@@ -1,6 +1,7 @@
 package br.ufms.cpcx.engweb.petshop.mb.auxiliar;
 
 import java.io.ByteArrayInputStream;
+
 import java.io.IOException;
 
 import javax.ejb.EJB;
