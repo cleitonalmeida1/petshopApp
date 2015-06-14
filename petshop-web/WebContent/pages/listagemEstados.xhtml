@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/template-principal.xhtml">
+
+	<ui:define name="conteudo">
+		<p:panel header="Estados" footer="Listagem de Estados"
+			toggleable="true">
+			<h:form>
+				<h:panelGrid columns="1" cellpadding="10" >
+					<p:commandButton value="Novo Estado" icon="ui-icon-plus" action="cadastroEstado?faces-redirect=true"></p:commandButton>
+					
+					<p:dataTable rendered="#{listagemEstadosMB.mostrarTabela}" id="tabela" var="estado" value="#{listagemEstadosMB.estados}" resizableColumns="true" emptyMessage="Nenhum Estado Cadastrado.">
+						<p:column headerText="Id" width="5%" styleClass="coluna">
+							<h:outputText value="#{estado.id}"/>
+						</p:column>
+						
+						<p:column headerText="Nome" width="20%" styleClass="coluna">
+							<h:outputText value="#{estado.nome}" />
+						</p:column>
+						
+						<p:column headerText="Sigla" width="5%" styleClass="coluna">
+							<h:outputText value="#{estado.uf}" />
+						</p:column>
+						
+						<p:column headerText="País" width="20%" styleClass="coluna">
+							<h:outputText value="#{estado.pais.nome}  (#{estado.pais.sigla})" />
+						</p:column>
+						
+						<p:column width="10%" headerText="Ações" styleClass="coluna">
+							<p:commandButton action="#{listagemEstadosMB.editar()}" icon="ui-icon-pencil">
+								<f:setPropertyActionListener value="#{estado}" target="#{cadastroEstadoMB.estado}">
+								</f:setPropertyActionListener>
+							</p:commandButton>
+							<p:commandButton actionListener="#{listagemEstadosMB.remover(estado)}" icon="ui-icon-trash" update="tabela">
+							
+							</p:commandButton>
+						</p:column>
+					</p:dataTable>
+				</h:panelGrid>
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>

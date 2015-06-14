@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	template="/WEB-INF/template/template-principal.xhtml">
+
+	<ui:define name="conteudo">
+		<p:panel header="Cadastro de Cargo" footer="Inclusão de Novo Cargo"
+			toggleable="true">
+			<h:form>
+					<h:panelGrid columns="2" cellpadding="2" style="">
+						<h:outputLabel value="Nome" />
+						<p:inputText value="#{cadastroCargoMB.cargo.nome}" onfocus="criarCodigo(this, 'codigo');" onblur="criarCodigo(this, 'codigo');" />
+						
+						<h:outputLabel value="Código" />
+						<p:inputText value="#{cadastroCargoMB.cargo.codigo}" id="codigo"/>
+						
+					</h:panelGrid>
+					<p:commandButton value="Cancelar" action="#{cadastroCargoMB.cancelar()}" immediate="true" icon="ui-icon-cancel"></p:commandButton>
+					<p:commandButton value="Salvar" action="#{cadastroCargoMB.salvar()}" ajax="false" icon="ui-icon-check">
+					</p:commandButton>
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>

@@ -5,17 +5,49 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui">
 
-
 	<ui:composition>
 	 	<p:menu>
 	 		<p:submenu label="Petshop">
-	 			<p:menuitem value="Home" outcome="index" icon="ui-icon-home" ></p:menuitem>
+	 			<p:menuitem value="Início" outcome="index" icon="ui-icon-home" ></p:menuitem>
 	 		</p:submenu>
-	 		<p:submenu label="Cadastros">
-	 			<p:menuitem value="Cliente" outcome="listagemClientes" ></p:menuitem>
+	 		
+	 		<p:submenu label="Localidades">
+	 			<p:menuitem value="Paises" outcome="listagemPaises" ></p:menuitem>
+	 			<p:menuitem value="Estados" outcome="listagemEstados" ></p:menuitem>
+	 			<p:menuitem value="Cidades" outcome="listagemCidades" ></p:menuitem>
+	 			<p:menuitem value="Logradouros" outcome="listagemTiposLogradouros" ></p:menuitem>
+	 		</p:submenu>
+	 		
+	 		<p:submenu label="Compradores/Pets">
+	 			<p:menuitem value="Clientes" outcome="listagemClientes" ></p:menuitem>
+	 			<p:menuitem value="Animais" outcome="listagemAnimais" ></p:menuitem>
+	 		</p:submenu>
+	 	
+	 		<p:submenu label="Mercadorias">
+	 			<p:menuitem value="Marcas" outcome="listagemMarcas" ></p:menuitem>
+	 			<p:menuitem value="Categorias" outcome="listagemCategorias" ></p:menuitem>
 	 			<p:menuitem value="Fornecedores" outcome="listagemFornecedores"></p:menuitem>
-	 			<p:menuitem value="Animal" outcome="listagemAnimais" ></p:menuitem>
-	 			<p:menuitem value="Teste" outcome="teste" ></p:menuitem>
+	 			<p:menuitem value="Produtos/Serviços" outcome="listagemProdutos" ></p:menuitem>
+	 		</p:submenu>
+	 		
+	 		<p:submenu label="Recursos Humanos (RH)">
+	 			<p:menuitem value="Cargos" outcome="listagemCargos"></p:menuitem>
+	 			<p:menuitem value="Funcionários" outcome="listagemFuncionarios"></p:menuitem>	 			
+	 		</p:submenu>
+	 		
+	 		<p:submenu label="Financeiro/Serviços">
+	 			<p:menuitem value="Agendamentos" outcome="listagemAgendamentos" ></p:menuitem>
+	 			<p:menuitem value="Vendas" outcome="listagemVendas" ></p:menuitem>
+	 		</p:submenu>
+	 		
+	 		<p:submenu label="Controle de Acesso">
+	 			<p:menuitem value="Permissões de Acesso" outcome="permissoesAcesso" ></p:menuitem>
+	 			<p:menuitem value="Grupos de Usuários" outcome="listagemGruposUsuarios" ></p:menuitem>
+	 			<p:menuitem value="Usuários" outcome="listagemUsuarios" ></p:menuitem>
+	 		</p:submenu>
+	 		
+	 		<p:submenu label="Configurações">
+	 			<p:menuitem value="Sistema" outcome="configSistema" ></p:menuitem>
 	 		</p:submenu>
 	 	</p:menu>
 	</ui:composition>

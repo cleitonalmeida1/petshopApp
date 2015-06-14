@@ -20,12 +20,11 @@ import javax.validation.constraints.NotNull;
 @Table(name = "tb_venda")
 public class Venda implements Serializable {
 	
-	private static final long serialVersionUID = -2267294025210623147L;
-	
+	private static final long serialVersionUID = -8991028263543131376L;
 	@Id
 	@SequenceGenerator(name = "venda_seq_gen", sequenceName = "venda_seq", initialValue = 1, allocationSize = 1)
 	@GeneratedValue(generator = "venda_seq_gen", strategy = GenerationType.SEQUENCE)
-	
+	@Column(name = "id", nullable = false)
 	private Long id;
 	 //cliente
 	@OneToOne(optional = false)
@@ -82,4 +81,3 @@ public class Venda implements Serializable {
 		this.datahoravenda = datahoravenda;
 	}
 }
-

@@ -2,6 +2,7 @@ package br.ufms.cpcx.engweb.petshop.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -19,85 +20,79 @@ import br.ufms.cpcx.engweb.petshop.model.enuns.TipoEnderecoEnum;
 @Table(name = "tb_endereco")
 public class Endereco implements Serializable {
 
-	private static final long serialVersionUID = -1057247002655453427L;
-	
+	private static final long serialVersionUID = -4583252580654180131L;
 	@Id
 	@SequenceGenerator(name = "endereco_seq_gen", sequenceName = "endereco_seq", initialValue = 1, allocationSize = 1)
 	@GeneratedValue(generator = "endereco_seq_gen", strategy = GenerationType.SEQUENCE)
-	
+	@Column(name = "id", nullable = false)
 	private Long id;
-    private String logradouro;
-    private String bairro;
-    private Integer número;
-    private String complemento;
-    private String cep;
-    @OneToOne
-    private Cidade cidade;
-    private String estado;
-    
-  //tipo endereo
-    @Enumerated(EnumType.STRING)
+	private String logradouro;
+	private String bairro;
+	private Integer numero;
+	private String complemento;
+	private String cep;
+	@OneToOne
+	private Cidade cidade;
+
+	// tipo Logradouro
+	@OneToOne
+	private TipoLogradouro tipoLogradouro;
+
+	// tipo endereço
+	@Enumerated(EnumType.STRING)
 	@NotNull
 	private TipoEnderecoEnum tipoEndereco;
-    
-   
 
-    public Endereco() {
-    }
+	public Endereco() {
+	}
 
-    public Endereco(Long id) {
-        this.id = id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public String getLogradouro() {
+		return logradouro;
+	}
 
-    public String getLogradouro() {
-        return logradouro;
-    }
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
+	}
 
-    public void setLogradouro(String logradouro) {
-        this.logradouro = logradouro;
-    }
+	public String getBairro() {
+		return bairro;
+	}
 
-   
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
 
-    public String getBairro() {
-        return bairro;
-    }
+	public Integer getNumero() {
+		return numero;
+	}
 
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
-    }
+	public void setNumero(Integer numero) {
+		this.numero = numero;
+	}
 
-    public Integer getNúmero() {
-        return número;
-    }
+	public String getComplemento() {
+		return complemento;
+	}
 
-    public void setNúmero(Integer número) {
-        this.número = número;
-    }
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
 
-    public String getComplemento() {
-        return complemento;
-    }
+	public String getCep() {
+		return cep;
+	}
 
-    public void setComplemento(String complemento) {
-        this.complemento = complemento;
-    }
-
-    public String getCep() {
-        return cep;
-    }
-
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
 
 	public Cidade getCidade() {
 		return cidade;
@@ -107,12 +102,12 @@ public class Endereco implements Serializable {
 		this.cidade = cidade;
 	}
 
-	public String getEstado() {
-		return estado;
+	public TipoLogradouro getTipoLogradouro() {
+		return tipoLogradouro;
 	}
 
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public void setTipoLogradouro(TipoLogradouro tipoLogradouro) {
+		this.tipoLogradouro = tipoLogradouro;
 	}
 
 	public TipoEnderecoEnum getTipoEndereco() {
@@ -122,8 +117,4 @@ public class Endereco implements Serializable {
 	public void setTipoEndereco(TipoEnderecoEnum tipoEndereco) {
 		this.tipoEndereco = tipoEndereco;
 	}
-    
-    
-    
 }
-

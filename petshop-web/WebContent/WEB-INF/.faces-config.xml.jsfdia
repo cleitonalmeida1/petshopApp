@@ -2,8 +2,41 @@
 <PROCESS model-entity="JSFProcess">
  <PROCESS-ITEM NAME="rules:*" PATH="*" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:*:0" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="dropdown::#pages#dropdown.xhtml"
+    NAME="output" PATH="/pages/dropdown.xhtml"
+    TARGET="rules:#pages#dropdown.xhtml" TITLE="dropdown" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="listagemPaises::#pages#listagemPaises.xhtml"
+    NAME="output7" PATH="/pages/listagemPaises.xhtml"
+    TARGET="rules:#pages#listagemPaises.xhtml" TITLE="listagemPaises" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="cadastroPais::#pages#cadastroPais.xhtml"
+    NAME="output6" PATH="/pages/cadastroPais.xhtml"
+    TARGET="rules:#pages#cadastroPais.xhtml" TITLE="cadastroPais" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT
-    ID="listagemClientes::#pages#listagemClientes.xhtml" NAME="output"
+    ID="listagemEstados::#pages#listagemEstados.xhtml" NAME="output10"
+    PATH="/pages/listagemEstados.xhtml"
+    TARGET="rules:#pages#listagemEstados.xhtml" TITLE="listagemEstados" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="cadastroEstado::#pages#cadastroEstado.xhtml"
+    NAME="output9" PATH="/pages/cadastroEstado.xhtml"
+    TARGET="rules:#pages#cadastroEstado.xhtml" TITLE="cadastroEstado" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="listagemCidades::#pages#listagemCidades.xhtml" NAME="output12"
+    PATH="/pages/listagemCidades.xhtml"
+    TARGET="rules:#pages#listagemCidades.xhtml" TITLE="listagemCidades" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="cadastroCidade::#pages#cadastroCidade.xhtml"
+    NAME="output11" PATH="/pages/cadastroCidade.xhtml"
+    TARGET="rules:#pages#cadastroCidade.xhtml" TITLE="cadastroCidade" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="listagemTiposLogradouros::#pages#listagemTiposLogradouros.xhtml"
+    NAME="output1" PATH="/pages/listagemTiposLogradouros.xhtml"
+    TARGET="rules:#pages#listagemTiposLogradouros.xhtml"
+    TITLE="listagemTiposLogradouros" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="cadastroTipoLogradouro::#pages#cadastroTipoLogradouro.xhtml"
+    NAME="output2" PATH="/pages/cadastroTipoLogradouro.xhtml"
+    TARGET="rules:#pages#cadastroTipoLogradouro.xhtml"
+    TITLE="cadastroTipoLogradouro" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="listagemClientes::#pages#listagemClientes.xhtml" NAME="output3"
     PATH="/pages/listagemClientes.xhtml"
     TARGET="rules:#pages#listagemClientes.xhtml"
     TITLE="listagemClientes" model-entity="JSFProcessItemOutput"/>
@@ -11,15 +44,173 @@
     ID="cadastroCliente::#pages#cadastroCliente.xhtml" NAME="output4"
     PATH="/pages/cadastroCliente.xhtml"
     TARGET="rules:#pages#cadastroCliente.xhtml" TITLE="cadastroCliente" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="viewClientes::#pages#viewCliente.xhtml"
-    NAME="output1" PATH="/pages/viewCliente.xhtml"
-    TARGET="rules:#pages#viewCliente.xhtml" TITLE="viewClientes" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="cadastroAnimal::#pages#cadastroAnimal.xhtml"
+    NAME="output5" PATH="/pages/cadastroAnimal.xhtml"
+    TARGET="rules:#pages#cadastroAnimal.xhtml" TITLE="cadastroAnimal" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="listagemMarcas::#pages#listagemMarcas.xhtml"
+    NAME="output8" PATH="/pages/listagemMarcas.xhtml"
+    TARGET="rules:#pages#listagemMarcas.xhtml" TITLE="listagemMarcas" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="cadastroMarca::#pages#cadastroMarca.xhtml"
+    NAME="output13" PATH="/pages/cadastroMarca.xhtml"
+    TARGET="rules:#pages#cadastroMarca.xhtml" TITLE="cadastroMarca" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="listagemCategorias::#pages#listagemCategorias.xhtml"
+    NAME="output14" PATH="/pages/listagemCategorias.xhtml"
+    TARGET="rules:#pages#listagemCategorias.xhtml"
+    TITLE="listagemCategorias" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="cadastroCategoria::#pages#cadastroCategoria.xhtml"
+    NAME="output15" PATH="/pages/cadastroCategoria.xhtml"
+    TARGET="rules:#pages#cadastroCategoria.xhtml"
+    TITLE="cadastroCategoria" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="listagemFornecedores::#pages#listagemFornecedores.xhtml"
+    NAME="output16" PATH="/pages/listagemFornecedores.xhtml"
+    TARGET="rules:#pages#listagemFornecedores.xhtml"
+    TITLE="listagemFornecedores" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="cadastroFornecedor::#pages#cadastroFornecedor.xhtml"
+    NAME="output17" PATH="/pages/cadastroFornecedor.xhtml"
+    TARGET="rules:#pages#cadastroFornecedor.xhtml"
+    TITLE="cadastroFornecedor" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="listagemProdutos::#pages#listagemProdutos.xhtml" NAME="output18"
+    PATH="/pages/listagemProdutos.xhtml"
+    TARGET="rules:#pages#listagemProdutos.xhtml"
+    TITLE="listagemProdutos" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="cadastroProduto::#pages#cadastroProduto.xhtml" NAME="output19"
+    PATH="/pages/cadastroProduto.xhtml"
+    TARGET="rules:#pages#cadastroProduto.xhtml" TITLE="cadastroProduto" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="listagemCargos::#pages#listagemCargos.xhtml"
+    NAME="output20" PATH="/pages/listagemCargos.xhtml"
+    TARGET="rules:#pages#listagemCargos.xhtml" TITLE="listagemCargos" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="cadastroCargo::#pages#cadastroCargo.xhtml"
+    NAME="output21" PATH="/pages/cadastroCargo.xhtml"
+    TARGET="rules:#pages#cadastroCargo.xhtml" TITLE="cadastroCargo" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="listagemFuncionarios::#pages#listagemFuncionarios.xhtml"
+    NAME="output22" PATH="/pages/listagemFuncionarios.xhtml"
+    TARGET="rules:#pages#listagemFuncionarios.xhtml"
+    TITLE="listagemFuncionarios" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="cadastroFuncionario::#pages#cadastroFuncionario.xhtml"
+    NAME="output23" PATH="/pages/cadastroFuncionario.xhtml"
+    TARGET="rules:#pages#cadastroFuncionario.xhtml"
+    TITLE="cadastroFuncionario" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="listagemAgendamentos::#pages#listagemAgendamentos.xhtml"
+    NAME="output24" PATH="/pages/listagemAgendamentos.xhtml"
+    TARGET="rules:#pages#listagemAgendamentos.xhtml"
+    TITLE="listagemAgendamentos" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="cadastroAgendamento::#pages#cadastroAgendamento.xhtml"
+    NAME="output25" PATH="/pages/cadastroAgendamento.xhtml"
+    TARGET="rules:#pages#cadastroAgendamento.xhtml"
+    TITLE="cadastroAgendamento" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="listagemVendas::#pages#listagemVendas.xhtml"
+    NAME="output26" PATH="/pages/listagemVendas.xhtml"
+    TARGET="rules:#pages#listagemVendas.xhtml" TITLE="listagemVendas" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="cadastroPermissoesAcesso::#pages#cadastroPermissoesAcesso.xhtml"
+    NAME="output27" PATH="/pages/cadastroPermissoesAcesso.xhtml"
+    TARGET="rules:#pages#cadastroPermissoesAcesso.xhtml"
+    TITLE="cadastroPermissoesAcesso" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="listagemGruposUsuarios::#pages#listagemGruposUsuarios.xhtml"
+    NAME="output28" PATH="/pages/listagemGruposUsuarios.xhtml"
+    TARGET="rules:#pages#listagemGruposUsuarios.xhtml"
+    TITLE="listagemGruposUsuarios" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="cadastroGrupoUsuario::#pages#cadastroGrupoUsuario.xhtml"
+    NAME="output31" PATH="/pages/cadastroGrupoUsuario.xhtml"
+    TARGET="rules:#pages#cadastroGrupoUsuario.xhtml"
+    TITLE="cadastroGrupoUsuario" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="listagemUsuarios::#pages#listagemUsuarios.xhtml" NAME="output30"
+    PATH="/pages/listagemUsuarios.xhtml"
+    TARGET="rules:#pages#listagemUsuarios.xhtml"
+    TITLE="listagemUsuarios" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="configSistema::#pages#configSistema.xhtml"
+    NAME="output29" PATH="/pages/configSistema.xhtml"
+    TARGET="rules:#pages#configSistema.xhtml" TITLE="configSistema" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="editarConfigSistema::#pages#editarConfigSistema.xhtml"
+    NAME="output32" PATH="/pages/editarConfigSistema.xhtml"
+    TARGET="rules:#pages#editarConfigSistema.xhtml"
+    TITLE="editarConfigSistema" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#pages#listagemClientes.xhtml"
-  PATH="/pages/listagemClientes.xhtml" SHAPE="304,33,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#pages#cadastroCliente.xhtml"
   PATH="/pages/cadastroCliente.xhtml" SHAPE="304,641,0,0" model-entity="JSFProcessGroup"/>
- <PROCESS-ITEM NAME="rules:#pages#viewCliente.xhtml"
-  PATH="/pages/viewCliente.xhtml" SHAPE="272,209,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#cadastroProduto.xhtml"
+  PATH="/pages/cadastroProduto.xhtml" SHAPE="288,353,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#listagemProdutos.xhtml"
+  PATH="/pages/listagemProdutos.xhtml" SHAPE="304,385,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#cadastroAnimal.xhtml"
+  PATH="/pages/cadastroAnimal.xhtml" SHAPE="304,385,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#listagemClientes.xhtml"
+  PATH="/pages/listagemClientes.xhtml" SHAPE="304,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#cadastroEstado.xhtml"
+  PATH="/pages/cadastroEstado.xhtml" SHAPE="304,1057,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#listagemPaises.xhtml"
+  PATH="/pages/listagemPaises.xhtml" SHAPE="304,833,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#cadastroPais.xhtml"
+  PATH="/pages/cadastroPais.xhtml" SHAPE="304,609,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#listagemCidades.xhtml"
+  PATH="/pages/listagemCidades.xhtml" SHAPE="304,1393,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#listagemEstados.xhtml"
+  PATH="/pages/listagemEstados.xhtml" SHAPE="304,1169,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#cadastroCidade.xhtml"
+  PATH="/pages/cadastroCidade.xhtml" SHAPE="304,1281,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#listagemMarcas.xhtml"
+  PATH="/pages/listagemMarcas.xhtml" SHAPE="304,529,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#cadastroMarca.xhtml"
+  PATH="/pages/cadastroMarca.xhtml" SHAPE="304,529,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#listagemCategorias.xhtml"
+  PATH="/pages/listagemCategorias.xhtml" SHAPE="304,561,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#cadastroCategoria.xhtml"
+  PATH="/pages/cadastroCategoria.xhtml" SHAPE="304,593,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#cadastroFornecedor.xhtml"
+  PATH="/pages/cadastroFornecedor.xhtml" SHAPE="304,737,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#listagemFornecedores.xhtml"
+  PATH="/pages/listagemFornecedores.xhtml" SHAPE="304,625,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#listagemCargos.xhtml"
+  PATH="/pages/listagemCargos.xhtml" SHAPE="304,753,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#cadastroCargo.xhtml"
+  PATH="/pages/cadastroCargo.xhtml" SHAPE="304,753,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#listagemFuncionarios.xhtml"
+  PATH="/pages/listagemFuncionarios.xhtml" SHAPE="304,817,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#cadastroFuncionario.xhtml"
+  PATH="/pages/cadastroFuncionario.xhtml" SHAPE="304,817,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#listagemAgendamentos.xhtml"
+  PATH="/pages/listagemAgendamentos.xhtml" SHAPE="304,849,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#cadastroAgendamento.xhtml"
+  PATH="/pages/cadastroAgendamento.xhtml" SHAPE="304,881,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#listagemVendas.xhtml"
+  PATH="/pages/listagemVendas.xhtml" SHAPE="304,913,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#cadastroVenda.xhtml"
+  PATH="/pages/cadastroVenda.xhtml" SHAPE="304,945,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#permissoesAcesso.xhtml"
+  PATH="/pages/permissoesAcesso.xhtml" SHAPE="304,977,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#cadastroPermissoesAcesso.xhtml"
+  PATH="/pages/cadastroPermissoesAcesso.xhtml" SHAPE="304,1073,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#listagemGruposUsuarios.xhtml"
+  PATH="/pages/listagemGruposUsuarios.xhtml" SHAPE="304,1185,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#listagemUsuarios.xhtml"
+  PATH="/pages/listagemUsuarios.xhtml" SHAPE="304,1105,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#cadastroGrupoUsuario.xhtml"
+  PATH="/pages/cadastroGrupoUsuario.xhtml" SHAPE="304,1137,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#configSistema.xhtml"
+  PATH="/pages/configSistema.xhtml" SHAPE="304,1137,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#editarConfigSistema.xhtml"
+  PATH="/pages/editarConfigSistema.xhtml" SHAPE="304,1169,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#listagemTiposLogradouros.xhtml"
+  PATH="/pages/listagemTiposLogradouros.xhtml" SHAPE="304,1169,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#cadastroTipoLogradouro.xhtml"
+  PATH="/pages/cadastroTipoLogradouro.xhtml" SHAPE="304,1169,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#index.xhtml" PATH="/pages/index.xhtml"
+  SHAPE="304,1169,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#dropdown.xhtml"
+  PATH="/pages/dropdown.xhtml" SHAPE="304,1169,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

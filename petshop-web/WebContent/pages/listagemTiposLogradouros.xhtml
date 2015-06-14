@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/template-principal.xhtml">
+
+	<ui:define name="conteudo">
+		<p:panel header="Paises" footer="Listagem de Tipos de Logradouros" toggleable="true">
+			<h:form>
+				<h:panelGrid columns="1" cellpadding="10" >
+					<p:commandButton value="Novo Tipo de Logradouro" icon="ui-icon-plus" action="cadastroTipoLogradouro?faces-redirect=true"></p:commandButton>
+					
+					<p:dataTable rendered="#{listagemTiposLogradourosMB.mostrarTabela}" id="tabela" var="tipoLogradouro" value="#{listagemTiposLogradourosMB.tiposDeLogradouros}" resizableColumns="true" emptyMessage="Nenhum Tipo de Logradouro Cadastrado.">
+						<p:column headerText="Id" width="5%" styleClass="coluna">
+							<h:outputText value="#{tipoLogradouro.id}"/>
+						</p:column>
+						
+						<p:column headerText="Nome" width="60%" styleClass="coluna">
+							<h:outputText value="#{tipoLogradouro.nome}" />
+						</p:column>
+						
+						<p:column headerText="Abreviação" width="20%" styleClass="coluna">
+							<h:outputText value="#{tipoLogradouro.abreviacao}" />
+						</p:column>
+						
+						<p:column width="10%" headerText="Ações" styleClass="coluna">
+							<p:commandButton action="#{listagemTiposLogradourosMB.editar()}" icon="ui-icon-pencil">
+								<f:setPropertyActionListener value="#{tipoLogradouro}" target="#{cadastroTipoLogradouroMB.tipoLogradouro}">
+								</f:setPropertyActionListener>
+							</p:commandButton>
+							<p:commandButton actionListener="#{listagemTiposLogradourosMB.remover(tipoLogradouro)}" icon="ui-icon-trash" update="tabela">
+							
+							</p:commandButton>
+						</p:column>
+					</p:dataTable>
+				</h:panelGrid>
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>

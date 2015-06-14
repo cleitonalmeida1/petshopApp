@@ -35,8 +35,7 @@
 
 					<h:panelGrid columns="2" cellpadding="5">
 						<h:outputLabel for="data" value="Nasc." />
-						<p:calendar id="data"
-							value="#{cadastroAnimalMB.animal.datanascimento}" showOn="button" />
+						<p:calendar id="data" value="#{cadastroAnimalMB.animal.datanascimento}" mask="99/99/9999" pattern="dd/MM/yyyy" yearRange="c-120:c+10" locale="pt_BR" navigator="true" showOn="button" />
 
 						<h:outputLabel value="Peso" />
 						<p:inputText value="#{cadastroAnimalMB.animal.peso}" />

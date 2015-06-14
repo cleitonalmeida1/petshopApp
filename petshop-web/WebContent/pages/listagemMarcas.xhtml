@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/template-principal.xhtml">
+
+	<ui:define name="conteudo">
+		<p:panel header="Marcas" footer="Listagem de Marcas"
+			toggleable="true">
+			<h:form>
+				<h:panelGrid columns="1" cellpadding="10" >
+					<p:commandButton value="Nova Marca" icon="ui-icon-plus" action="cadastroMarca?faces-redirect=true"></p:commandButton>
+					
+					<p:dataTable rendered="#{listagemMarcasMB.mostrarTabela}" id="tabela" var="marca" value="#{listagemMarcasMB.marcas}" resizableColumns="true" emptyMessage="Nenhuma Marca Cadastrada.">
+						<p:column headerText="Id" width="10%" styleClass="coluna">
+							<h:outputText value="#{marca.id}"/>
+						</p:column>
+						
+						<p:column headerText="Nome" width="70%" styleClass="coluna">
+							<h:outputText value="#{marca.nome}" />
+						</p:column>
+						
+						<p:column width="20%" headerText="Ações" styleClass="coluna">
+							<p:commandButton action="#{listagemMarcasMB.editar()}" icon="ui-icon-pencil">
+								<f:setPropertyActionListener value="#{marca}" target="#{cadastroMarcaMB.marca}">
+								</f:setPropertyActionListener>
+							</p:commandButton>
+							<p:commandButton actionListener="#{listagemMarcasMB.remover(marca)}" icon="ui-icon-trash" update="tabela">
+							
+							</p:commandButton>
+						</p:column>
+					</p:dataTable>
+				</h:panelGrid>
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>

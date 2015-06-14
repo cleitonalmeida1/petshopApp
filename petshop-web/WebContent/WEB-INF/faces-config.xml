@@ -1,35 +1,238 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
- <navigation-rule>
-  <from-view-id>*</from-view-id>
-  <navigation-case>
-   <from-outcome>listagemClientes</from-outcome>
-   <to-view-id>/pages/listagemClientes.xhtml</to-view-id>
-  </navigation-case>
-
-  <navigation-case>
-   <from-outcome>cadastroCliente</from-outcome>
-   <to-view-id>/pages/cadastroCliente.xhtml</to-view-id>
-  </navigation-case>
- 
-  <navigation-case>
-   <from-outcome>viewClientes</from-outcome>
-   <to-view-id>/pages/viewCliente.xhtml</to-view-id>
-  </navigation-case>
- 
- </navigation-rule>
- 
- <application>
- 	<action-listener>
- 		org.primefaces.application.DialogActionListener
- 	</action-listener>
- 	<navigation-handler>
- 		org.primefaces.application.DialogNavigationHandler
- 	</navigation-handler>
- 	 <view-handler>
-   		 org.primefaces.application.DialogViewHandler
-  	</view-handler>
- </application>
-
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+	<converter>
+        <description>GenericConverter</description>
+        <converter-id>genericConverter</converter-id>
+        <converter-class>br.ufms.cpcx.engweb.petshop.mb.converters.GenericConverter</converter-class>
+    </converter>
+    <converter>
+        <description>ConverterPais</description>
+        <converter-id>converterPais</converter-id>
+        <converter-class>br.ufms.cpcx.engweb.petshop.mb.converters.ConverterPais</converter-class>
+    </converter>
+    <converter>
+        <description>ConverterEstado</description>
+        <converter-id>converterEstado</converter-id>
+        <converter-class>br.ufms.cpcx.engweb.petshop.mb.converters.ConverterEstado</converter-class>
+    </converter>
+    <converter>
+        <description>ConverterCidade</description>
+        <converter-id>converterCidade</converter-id>
+        <converter-class>br.ufms.cpcx.engweb.petshop.mb.converters.ConverterCidade</converter-class>
+    </converter>
+        
+	<navigation-rule>
+		<!-- Permissão de Navegação -->
+		<from-view-id>*</from-view-id>
+		
+		<navigation-case>
+			<from-outcome>dropdown</from-outcome>
+			<to-view-id>/pages/dropdown.xhtml</to-view-id>
+		</navigation-case>
+		
+		<!-- Início (URLs) -->
+		<navigation-case>
+			<from-outcome>index</from-outcome>
+			<to-view-id>/pages/index.xhtml</to-view-id>
+		</navigation-case>
+		
+		<!-- #################### Localidades (URLs) #################### -->
+		<!-- Paises (URLs) -->
+		<navigation-case>
+			<from-outcome>listagemPaises</from-outcome>
+			<to-view-id>/pages/listagemPaises.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cadastroPais</from-outcome>
+			<to-view-id>/pages/cadastroPais.xhtml</to-view-id>
+		</navigation-case>
+		
+		<!-- Estados (URLs) -->
+		<navigation-case>
+			<from-outcome>listagemEstados</from-outcome>
+			<to-view-id>/pages/listagemEstados.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cadastroEstado</from-outcome>
+			<to-view-id>/pages/cadastroEstado.xhtml</to-view-id>
+		</navigation-case>
+		
+		<!-- Cidades (URLs) -->
+		<navigation-case>
+			<from-outcome>listagemCidades</from-outcome>
+			<to-view-id>/pages/listagemCidades.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cadastroCidade</from-outcome>
+			<to-view-id>/pages/cadastroCidade.xhtml</to-view-id>
+		</navigation-case>
+		
+		<!-- Tipos de Logradouros (URLs) -->
+		<navigation-case>
+			<from-outcome>listagemTiposLogradouros</from-outcome>
+			<to-view-id>/pages/listagemTiposLogradouros.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cadastroTipoLogradouro</from-outcome>
+			<to-view-id>/pages/cadastroTipoLogradouro.xhtml</to-view-id>
+		</navigation-case>
+		<!-- ############################################################ -->
+		
+		<!-- ################# Compradores/Pets (URLs) ################## -->
+		<!-- Clientes (URLs) -->
+		<navigation-case>
+			<from-outcome>listagemClientes</from-outcome>
+			<to-view-id>/pages/listagemClientes.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cadastroCliente</from-outcome>
+			<to-view-id>/pages/cadastroCliente.xhtml</to-view-id>
+		</navigation-case>
+		
+		<!-- Animais (URLs) -->
+		<navigation-case>
+			<from-outcome>listagemClientes</from-outcome>
+			<to-view-id>/pages/listagemClientes.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cadastroAnimal</from-outcome>
+			<to-view-id>/pages/cadastroAnimal.xhtml</to-view-id>
+		</navigation-case>
+		<!-- ############################################################ -->
+		
+		<!-- #################### Mercadorias (URLs) #################### -->
+		<!-- Marcas (URLs) -->
+		<navigation-case>
+			<from-outcome>listagemMarcas</from-outcome>
+			<to-view-id>/pages/listagemMarcas.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cadastroMarca</from-outcome>
+			<to-view-id>/pages/cadastroMarca.xhtml</to-view-id>
+		</navigation-case>
+		
+		<!-- Categorias (URLs) -->
+		<navigation-case>
+			<from-outcome>listagemCategorias</from-outcome>
+			<to-view-id>/pages/listagemCategorias.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cadastroCategoria</from-outcome>
+			<to-view-id>/pages/cadastroCategoria.xhtml</to-view-id>
+		</navigation-case>
+		
+		<!-- Fornecedores (URLs) -->
+		<navigation-case>
+			<from-outcome>listagemFornecedores</from-outcome>
+			<to-view-id>/pages/listagemFornecedores.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cadastroFornecedor</from-outcome>
+			<to-view-id>/pages/cadastroFornecedor.xhtml</to-view-id>
+		</navigation-case>
+		
+		<!-- Produtos (URLs) -->
+		<navigation-case>
+			<from-outcome>listagemProdutos</from-outcome>
+			<to-view-id>/pages/listagemProdutos.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cadastroProduto</from-outcome>
+			<to-view-id>/pages/cadastroProduto.xhtml</to-view-id>
+		</navigation-case>
+		<!-- ############################################################ -->
+		
+		<!-- ############### Recursos Humanos (RH) (URLs) ############### -->
+		<!-- Cargos (URLs) -->
+		<navigation-case>
+			<from-outcome>listagemCargos</from-outcome>
+			<to-view-id>/pages/listagemCargos.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cadastroCargo</from-outcome>
+			<to-view-id>/pages/cadastroCargo.xhtml</to-view-id>
+		</navigation-case>
+		
+		<!-- Funcionários (URLs) -->
+		<navigation-case>
+			<from-outcome>listagemFuncionarios</from-outcome>
+			<to-view-id>/pages/listagemFuncionarios.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cadastroFuncionario</from-outcome>
+			<to-view-id>/pages/cadastroFuncionario.xhtml</to-view-id>
+		</navigation-case>
+		<!-- ############################################################ -->
+		
+		<!-- ################ Financeiro/Serviços (URLs) ################ -->
+		<!-- Agendamentos (URLs) -->
+		<navigation-case>
+			<from-outcome>listagemAgendamentos</from-outcome>
+			<to-view-id>/pages/listagemAgendamentos.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cadastroAgendamento</from-outcome>
+			<to-view-id>/pages/cadastroAgendamento.xhtml</to-view-id>
+		</navigation-case>
+		
+		<!-- Vendas (URLs) -->
+		<navigation-case>
+			<from-outcome>listagemVendas</from-outcome>
+			<to-view-id>/pages/listagemVendas.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cadastroVenda</from-outcome>
+			<to-view-id>/pages/cadastroVenda.xhtml</to-view-id>
+		</navigation-case>
+		<!-- ############################################################ -->
+		
+		<!-- ################# Controle de Acesso (URLs) ################ -->
+		<!-- Permissões de Acesso (URLs) -->
+		<navigation-case>
+			<from-outcome>permissoesAcesso</from-outcome>
+			<to-view-id>/pages/permissoesAcesso.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cadastroPermissoesAcesso</from-outcome>
+			<to-view-id>/pages/cadastroPermissoesAcesso.xhtml</to-view-id>
+		</navigation-case>
+		
+		<!-- Grupos de Usuários (URLs) -->
+		<navigation-case>
+			<from-outcome>listagemGruposUsuarios</from-outcome>
+			<to-view-id>/pages/listagemGruposUsuarios.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cadastroGrupoUsuario</from-outcome>
+			<to-view-id>/pages/cadastroGrupoUsuario.xhtml</to-view-id>
+		</navigation-case>
+		
+		<!-- Usuários (URLs) -->
+		<navigation-case>
+			<from-outcome>listagemUsuarios</from-outcome>
+			<to-view-id>/pages/listagemUsuarios.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cadastroGrupoUsuario</from-outcome>
+			<to-view-id>/pages/cadastroGrupoUsuario.xhtml</to-view-id>
+		</navigation-case>
+		<!-- ############################################################ -->
+		
+		<!-- ################# Configurações (URLs) ################ -->
+		<!-- Sistema (URLs) -->
+		<navigation-case>
+			<from-outcome>configSistema</from-outcome>
+			<to-view-id>/pages/configSistema.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>editarConfigSistema</from-outcome>
+			<to-view-id>/pages/editarConfigSistema.xhtml</to-view-id>
+		</navigation-case>
+		<!-- ############################################################ -->
+	</navigation-rule>
+	<application>
+		<action-listener>org.primefaces.application.DialogActionListener</action-listener>
+		<navigation-handler>org.primefaces.application.DialogNavigationHandler</navigation-handler>
+		<view-handler>org.primefaces.application.DialogViewHandler</view-handler>
+	</application>
 </faces-config>

@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	template="/WEB-INF/template/template-principal.xhtml">
+
+	<ui:define name="conteudo">
+		<p:panel header="Cadastro de Produto/Serviço" footer="Inclusão de Novo Produto/Serviço"
+			toggleable="true">
+			<h:form>
+					<h:panelGrid columns="2" cellpadding="2" style="">
+						<h:outputLabel value="Nome" />
+						<p:inputText value="#{cadastroProdutoMB.produto.nome}" />
+						
+						<h:outputLabel value="Descrição" />
+						<p:outputPanel style="display:block">
+							<p:inputTextarea value="#{cadastroProdutoMB.produto.descricao}" rows="5" cols="30" counter="display" maxlength="#{cadastroProdutoMB.produto.tamMaxDescricao}" counterTemplate="{0} caracteres restantes." autoResize="true" />
+							<br></br>
+							<h:outputText id="display" />
+						</p:outputPanel>
+						
+						<h:outputLabel value="Preço" />
+						<pe:inputNumber thousandSeparator="." decimalSeparator="," decimalPlaces="2" value="#{cadastroProdutoMB.produto.valorUnitario}"></pe:inputNumber>
+						
+						<h:outputLabel value="Quantidade" />
+						<p:inputText value="#{cadastroProdutoMB.produto.qtde}" />
+						
+						<h:outputLabel value="Marca" />
+						<p:selectOneMenu value="#{cadastroProdutoMB.idMarca}">
+							<f:selectItem itemLabel="Selecione a Marca" itemValue="" />
+							<f:selectItems value="#{cadastroProdutoMB.marcas}" var="marca" itemLabel="#{marca.nome}" itemValue="#{marca.id}"></f:selectItems>
+						</p:selectOneMenu>
+						
+						<h:outputLabel value="Categoria" />
+						<p:selectOneMenu value="#{cadastroProdutoMB.idCategoria}">
+							<f:selectItem itemLabel="Selecione a Categoria" itemValue="" />
+							<f:selectItems value="#{cadastroProdutoMB.categorias}" var="categoria"
+								itemLabel="#{categoria.nome}" itemValue="#{categoria.id}"></f:selectItems>
+						</p:selectOneMenu>
+						
+						<h:outputLabel value="Fornecedor" />
+						<p:selectOneMenu value="#{cadastroProdutoMB.idFornecedor}">
+							<f:selectItem itemLabel="Selecione o Fornecedor" itemValue="" />
+							<f:selectItems value="#{cadastroProdutoMB.fornecedores}" var="fornecedor"
+								itemLabel="#{fornecedor.nome}" itemValue="#{fornecedor.id}"></f:selectItems>
+						</p:selectOneMenu>
+					</h:panelGrid>
+
+					<h:form>
+						<h:panelGrid columns="2" cellpadding="5" width="100%">
+							<h:outputLabel value="Foto:" />
+							<p:fileUpload fileUploadListener="#{uploadMB.handleFileUpload}"
+								mode="advanced" dragDropSupport="true" sizeLimit="100000"
+								fileLimit="1" allowTypes="/(\.|\/)(gif|jpe?g|png)$/">
+							</p:fileUpload>
+	
+							<p:graphicImage height="40%" value="#{imagemMB.image}" id="foto"
+								cache="false">
+								<f:param name="fotoId"
+									value="#{(cadastroProdutoMB.produto.foto!=null?cadastroProdutoMB.produto.foto.id:null)}" />
+							</p:graphicImage>
+						</h:panelGrid>
+						<p:commandButton value="Cancelar"
+							action="#{cadastroProdutoMB.cancelar()}" immediate="true"
+							icon="ui-icon-cancel"></p:commandButton>
+						<p:commandButton value="Salvar"
+							action="#{cadastroProdutoMB.salvar(uploadMB.arquivo)}"
+							ajax="false" icon="ui-icon-check" update="foto"></p:commandButton>
+					</h:form>
+				
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>

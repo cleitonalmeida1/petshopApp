@@ -2,6 +2,7 @@ package br.ufms.cpcx.engweb.petshop.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +19,7 @@ public class Telefone implements Serializable{
 	@Id
 	@SequenceGenerator(name = "telefone_seq_gen", sequenceName = "telefone_seq", initialValue = 1, allocationSize = 1)
 	@GeneratedValue(generator = "telefone_seq_gen", strategy = GenerationType.SEQUENCE)
-	
+	@Column(name = "id", nullable = false)
 	private Long id;
     private String numero;
 	

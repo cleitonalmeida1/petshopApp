@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/template-principal.xhtml">
+
+	<ui:define name="conteudo">
+		<p:panel header="Produtos e Serviços" footer="Listagem de Produtos/Serviços"
+			toggleable="true">
+			<h:form>
+				<h:panelGrid columns="1" cellpadding="10" >
+					<p:commandButton value="Novo Produto/Serviço" icon="ui-icon-plus" action="cadastroProduto?faces-redirect=true"></p:commandButton>
+					
+					<p:dataTable rendered="#{listagemProdutosMB.mostrarTabela}" id="tabela" var="produto" value="#{listagemProdutosMB.produtos}" resizableColumns="true" emptyMessage="Nenhum Produto/Serviço Cadastrado.">
+						<p:column headerText="Id" width="5%" styleClass="coluna">
+							<h:outputText value="#{produto.id}"/>
+						</p:column>
+						
+						<p:column headerText="Nome" width="10%" styleClass="coluna">
+							<h:outputText value="#{produto.nome}" />
+						</p:column>
+						
+						<p:column headerText="Marca" width="10%" styleClass="coluna">
+							<h:outputText value="#{produto.marca}" />
+						</p:column>
+						
+						<p:column headerText="Preço" width="10%" styleClass="coluna">
+							<h:outputText value="#{produto.valorUnitario}">
+								<f:convertNumber pattern="#,000.00" locale="pt_BR"/>
+							</h:outputText>
+						</p:column>
+						
+						<p:column headerText="Quantidade" width="10%" styleClass="coluna">
+							<h:outputText value="#{produto.qtde}" />
+						</p:column>
+						
+						<p:column width="10%" headerText="Ações" styleClass="coluna">
+							<p:commandButton action="#{listagemProdutosMB.editar()}" icon="ui-icon-pencil">
+								<f:setPropertyActionListener value="#{produto}" target="#{cadastroProdutoMB.produto}">
+								</f:setPropertyActionListener>
+							</p:commandButton>
+							<p:commandButton actionListener="#{listagemProdutosMB.remover(produto)}" icon="ui-icon-trash" update="tabela">
+							
+							</p:commandButton>
+						</p:column>
+					</p:dataTable>
+				</h:panelGrid>
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	template="/WEB-INF/template/template-principal.xhtml">
+
+	<ui:define name="conteudo">
+		<p:panel header="Cadastro de País" footer="Inclusão de Novo País"
+			toggleable="true">
+			<h:form>
+					<h:panelGrid columns="2" cellpadding="2" style="">
+						<h:outputLabel value="Nome" />
+						<p:inputText value="#{cadastroPaisMB.pais.nome}" />
+						
+						<h:outputLabel value="Sigla" />
+						<p:inputText value="#{cadastroPaisMB.pais.sigla}" maxlength="#{cadastroPaisMB.pais.tamMaxSigla}" onkeyup="value=value.toUpperCase()"/>
+					</h:panelGrid>
+					<p:commandButton value="Cancelar" action="#{cadastroPaisMB.cancelar()}" immediate="true" icon="ui-icon-cancel"></p:commandButton>
+					<p:commandButton value="Salvar" action="#{cadastroPaisMB.salvar()}" ajax="false" icon="ui-icon-check"></p:commandButton>
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>
