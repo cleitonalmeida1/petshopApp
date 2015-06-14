@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	template="/WEB-INF/template/template-principal.xhtml">
+
+	<ui:define name="conteudo">
+		<p:panel header="Cadastro de Funcionário" footer="Inclusão de Novo Funcionário"
+			toggleable="true">
+			<h:form>
+				<p:growl id="msgs" showDetail="true" />
+				
+				<h:panelGrid columns="2" cellpadding="2" style="">
+					<h:outputLabel value="Nome" />
+						<p:inputText value="#{cadastroFuncionarioMB.funcionario.nome}" />
+						
+						<h:outputLabel value="CPF" />
+						<p:inputText value="#{cadastroFuncionarioMB.funcionario.cpf}" />
+						
+						<h:outputLabel value="RG" />
+						<p:inputText value="#{cadastroFuncionarioMB.funcionario.rg}" />
+						
+						<h:outputLabel for="data" value="Nasc." />
+						<p:calendar id="data" value="#{cadastroFuncionarioMB.funcionario.datanascimento}" mask="99/99/9999" pattern="dd/MM/yyyy" yearRange="c-120:c+10" locale="pt_BR" navigator="true" showOn="button" />
+						
+						<h:outputLabel value="Email" />
+						<p:inputText value="#{cadastroFuncionarioMB.funcionario.email}" />
+						
+						<h:outputLabel for="sexo" value="Sexo" />
+						<p:selectOneRadio id="sexo"
+							value="#{cadastroFuncionarioMB.funcionario.sexo}">
+							<f:selectItem itemLabel="Feminino" itemValue="F" />
+							<f:selectItem itemLabel="Masculino" itemValue="M" />
+						</p:selectOneRadio>
+	
+						<h:outputLabel value="Telefone" />
+						<p:inputText value="#{cadastroFuncionarioMB.telefone}"
+							style="width: 150px;"
+							requiredMessage="Informe o número do Telefone."
+							validatorMessage="Número de Telefone inválido!"
+							required="true"
+							onfocus="mascaraTelefone(this);" onblur="mascaraTelefone(this);"
+							styleClass="sp_celphones" type="tel" id="homephone">
+						</p:inputText>
+						
+						<h:outputLabel value="Cargo" />
+						<p:selectOneMenu value="#{cadastroFuncionarioMB.cargo.id}">
+							<f:selectItem itemLabel="Selecione o Cargo" itemValue="" />
+							<f:selectItems value="#{cadastroFuncionarioMB.cargos}" var="cargo" itemLabel="#{cargo.nome}" itemValue="#{cargo.id}"></f:selectItems>
+						</p:selectOneMenu>
+						
+						<h:outputLabel value="Salário" />
+						<pe:inputNumber thousandSeparator="." decimalSeparator="," decimalPlaces="2" value="#{cadastroFuncionarioMB.funcionario.salario}"></pe:inputNumber>
+			        	
+			        	<h:outputLabel value="Tipo do Logradouro" />
+						<p:selectOneMenu value="#{cadastroFuncionarioMB.tipoLogradouro.id}">
+							<f:selectItem itemLabel="Selecione o Tipo de Logradouro" itemValue="" />
+							<f:selectItems value="#{cadastroFuncionarioMB.tiposDeLogradouros}" var="tipoLogradouro" itemLabel="#{tipoLogradouro.nome}" itemValue="#{tipoLogradouro.id}"></f:selectItems>
+						</p:selectOneMenu>
+			        	
+				        <h:outputLabel value="Logradouro" />
+						<p:inputText value="#{cadastroFuncionarioMB.endereco.logradouro}" />
+						
+						<h:outputLabel value="Número" />
+						<p:inputText value="#{cadastroFuncionarioMB.endereco.numero}" />
+						
+						<h:outputLabel value="Complemento" />
+						<p:inputText value="#{cadastroFuncionarioMB.endereco.complemento}" />
+						
+						<h:outputLabel value="Bairro" />
+						<p:inputText value="#{cadastroFuncionarioMB.endereco.bairro}" />
+						
+						<h:outputLabel value="CEP" />
+						<p:inputText value="#{cadastroFuncionarioMB.endereco.cep}" mask="99999-999" />
+			        
+				        <h:outputLabel value="Tipo de Endereço" />
+						<p:selectOneMenu value="#{cadastroFuncionarioMB.tipoEnderecoString}">
+						    <f:selectItem itemLabel="Selecione o Tipo de Endereço" />
+						    <f:selectItems var="rotuloTipoEndereco" value="#{enumTipoEnderecoSelectOneMB.tiposDeEnderecos}" itemValue="#{rotuloTipoEndereco}" itemLabel="#{rotuloTipoEndereco.rotulo}" />
+						</p:selectOneMenu>
+			        
+			            <p:outputLabel for="pais" value="País: " />
+			            <p:selectOneMenu id="pais" value="#{cadastroFuncionarioMB.pais.id}" style="width:150px">
+			                <p:ajax listener="#{cadastroFuncionarioMB.onPaisChange()}" update="estado cidade" />
+			                <f:selectItem itemLabel="Selecione o País" itemValue="" noSelectionOption="true" />
+			                <f:selectItems value="#{cadastroFuncionarioMB.paises}" var="pais" itemLabel="#{pais.nome}" itemValue="#{pais.id}"></f:selectItems>
+			            </p:selectOneMenu>
+			 
+			            <p:outputLabel for="estado" value="Estado: " />
+			            <p:selectOneMenu id="estado" value="#{cadastroFuncionarioMB.estado.id}" style="width:150px">
+			                <p:ajax listener="#{cadastroFuncionarioMB.onEstadoChange()}" update="cidade" />
+			                <f:selectItem itemLabel="Selecione o Estado" itemValue="" noSelectionOption="true" />
+			                <f:selectItems value="#{cadastroFuncionarioMB.estados}" var="estado" itemLabel="#{estado.nome}" itemValue="#{estado.id}"></f:selectItems>
+			            </p:selectOneMenu>
+			            
+			            <p:outputLabel for="cidade" value="Cidade: " />
+			            <p:selectOneMenu id="cidade" value="#{cadastroFuncionarioMB.cidade.id}" style="width:150px">
+			                <f:selectItem itemLabel="Selecione a Cidade" itemValue="" noSelectionOption="true" />
+			                <f:selectItems value="#{cadastroFuncionarioMB.cidades}" var="cidade" itemLabel="#{cidade.nome}" itemValue="#{cidade.id}"></f:selectItems>
+			            </p:selectOneMenu>
+				</h:panelGrid>
+				
+				<p:separator />
+				
+				<p:commandButton value="Cancelar" action="#{cadastroFuncionarioMB.cancelar()}" immediate="true" icon="ui-icon-cancel"></p:commandButton>
+				<p:commandButton value="Salvar" action="#{cadastroFuncionarioMB.salvar()}" ajax="false" icon="ui-icon-check"></p:commandButton>
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>
