@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	template="/WEB-INF/template/template-principal.xhtml">
+
+	<ui:define name="conteudo">
+		<p:panel header="Cadastro de Cliente" footer="Inclusão de Novo Cliente"
+			toggleable="true">
+			<h:form>
+				<h:panelGrid columns="2" cellpadding="2" style="">
+					<h:outputLabel value="Tipo de Pessoa" />
+					<p:selectOneMenu value="#{cadastroClienteMB.tipoPessoaString}">
+					    <f:selectItem itemLabel="Selecione o Tipo de Pessoa" />
+					    <f:selectItems var="rotuloTipoPessoa" value="#{enumTipoPessoaSelectOneMB.tiposDePessoas}" itemValue="#{rotuloTipoPessoa}" itemLabel="#{rotuloTipoPessoa.rotulo}" />
+					</p:selectOneMenu>
+					
+					<h:outputLabel value="Nome/Razão Social" />
+					<p:inputText value="#{cadastroClienteMB.cliente.nomeRazaosocial}" />
+					
+					<h:outputLabel value="CPF/CNPJ" />
+					<p:inputText value="#{cadastroClienteMB.cliente.cpfCnpj}" />
+					
+					<h:outputLabel value="RG/IE" />
+					<p:inputText value="#{cadastroClienteMB.cliente.rgIe}" />
+					
+					<h:outputLabel for="data" value="Nasc." />
+					<p:calendar id="data" value="#{cadastroClienteMB.cliente.datanascimento}" mask="99/99/9999" pattern="dd/MM/yyyy" yearRange="c-120:c+10" locale="pt_BR" navigator="true" showOn="button" />
+					
+					<h:outputLabel value="Email" />
+					<p:inputText value="#{cadastroClienteMB.cliente.email}" />
+					
+					<h:outputLabel for="sexo" value="Sexo" />
+					<p:selectOneRadio id="sexo"
+						value="#{cadastroClienteMB.cliente.sexo}">
+						<f:selectItem itemLabel="Feminino" itemValue="F" />
+						<f:selectItem itemLabel="Masculino" itemValue="M" />
+					</p:selectOneRadio>
+					
+					<h:outputLabel value="Telefone" />
+					<p:inputText value="#{cadastroClienteMB.telefone.numero}"
+						style="width: 150px;"
+						requiredMessage="Informe o número do Telefone."
+						validatorMessage="Número de Telefone inválido!"
+						required="true"
+						onfocus="mascaraTelefone(this);" onblur="mascaraTelefone(this);"
+						styleClass="sp_celphones" type="tel" id="homephone">
+					</p:inputText>
+					
+					<h:outputLabel value="Tipo do Logradouro" />
+					<p:selectOneMenu value="#{cadastroClienteMB.tipoLogradouro.id}">
+						<f:selectItem itemLabel="Selecione o Tipo de Logradouro" itemValue="" />
+						<f:selectItems value="#{cadastroClienteMB.tiposDeLogradouros}" var="tipoLogradouro" itemLabel="#{tipoLogradouro.nome}" itemValue="#{tipoLogradouro.id}"></f:selectItems>
+					</p:selectOneMenu>
+					
+					<h:outputLabel value="Logradouro" />
+					<p:inputText value="#{cadastroClienteMB.endereco.logradouro}" />
+					
+					<h:outputLabel value="Número" />
+					<p:inputText value="#{cadastroClienteMB.endereco.numero}" />
+					
+					<h:outputLabel value="Complemento" />
+					<p:inputText value="#{cadastroClienteMB.endereco.complemento}" />
+					
+					<h:outputLabel value="Bairro" />
+					<p:inputText value="#{cadastroClienteMB.endereco.bairro}" />
+					
+					<h:outputLabel value="CEP" />
+					<p:inputText value="#{cadastroClienteMB.endereco.cep}" mask="99999-999" />
+					
+					<h:outputLabel value="Tipo de Endereço" />
+					<p:selectOneMenu value="#{cadastroClienteMB.tipoEnderecoString}">
+					    <f:selectItem itemLabel="Selecione o Tipo de Endereço" />
+					    <f:selectItems var="rotuloTipoEndereco" value="#{enumTipoEnderecoSelectOneMB.tiposDeEnderecos}" itemValue="#{rotuloTipoEndereco}" itemLabel="#{rotuloTipoEndereco.rotulo}" />
+					</p:selectOneMenu>
+					
+					<p:outputLabel for="pais" value="País: " />
+		            <p:selectOneMenu id="pais" value="#{cadastroClienteMB.pais.id}" style="width:150px">
+		            	<f:selectItem itemLabel="Selecione o País" itemValue="" noSelectionOption="true" />
+		            	<f:selectItems value="#{cadastroClienteMB.paises}" var="pais" itemLabel="#{pais.nome}" itemValue="#{pais.id}"></f:selectItems>
+		            	<p:ajax listener="#{cadastroClienteMB.onPaisChange()}" update="estado cidade" />
+		            </p:selectOneMenu>
+		            
+		            <p:outputLabel for="estado" value="Estado: " />
+		            <p:selectOneMenu id="estado" value="#{cadastroClienteMB.estado.id}" style="width:150px">
+		            	<f:selectItem itemLabel="Selecione o Estado" itemValue="" noSelectionOption="true" />
+		            	<f:selectItems value="#{cadastroClienteMB.estados}" var="estado" itemLabel="#{estado.nome}" itemValue="#{estado.id}"></f:selectItems>
+		            	<p:ajax listener="#{cadastroClienteMB.onEstadoChange()}" update="cidade" />
+		            </p:selectOneMenu>
+		            
+		            <p:outputLabel for="cidade" value="Cidade: " />
+		            <p:selectOneMenu id="cidade" value="#{cadastroClienteMB.cidade.id}" style="width:150px">
+		            	<f:selectItem itemLabel="Selecione a Cidade" itemValue="" noSelectionOption="true" />
+		            	<f:selectItems value="#{cadastroClienteMB.cidades}" var="cidade" itemLabel="#{cidade.nome}" itemValue="#{cidade.id}"></f:selectItems>
+		            </p:selectOneMenu>
+				</h:panelGrid>
+					
+				<p:commandButton value="Cancelar" action="#{cadastroClienteMB.cancelar()}" immediate="true" icon="ui-icon-cancel"></p:commandButton>
+				<p:commandButton value="Salvar" action="#{cadastroClienteMB.salvar()}" ajax="false" icon="ui-icon-check"></p:commandButton>
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>
