@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	template="/WEB-INF/template/template-principal.xhtml">
+
+	<ui:define name="conteudo">
+		<p:panel header="Cadastro de Fornecedor" footer="Inclusão de Novo Fornecedor"
+			toggleable="true">
+			<h:form>
+				<p:growl id="msgs" showDetail="true" />
+				
+				<h:panelGrid columns="2" cellpadding="2" style="">
+					<h:outputLabel value="Nome/Razão Social" />
+						<p:inputText value="#{cadastroFornecedorMB.fornecedor.nome}" />
+						
+						<h:outputLabel value="CNPJ" />
+						<p:inputText value="#{cadastroFornecedorMB.fornecedor.cnpj}" />
+						
+						<h:outputLabel value="Inscrição Estadual" />
+						<p:inputText value="#{cadastroFornecedorMB.fornecedor.ie}" />
+						
+						<h:outputLabel value="Email" />
+						<p:inputText value="#{cadastroFornecedorMB.fornecedor.email}" />
+	
+						<h:outputLabel value="Telefone" />
+						<p:inputText value="#{cadastroFornecedorMB.telefone}"
+							style="width: 150px;"
+							requiredMessage="Informe o número do Telefone."
+							validatorMessage="Número de Telefone inválido!"
+							required="true"
+							onfocus="mascaraTelefone(this);" onblur="mascaraTelefone(this);"
+							styleClass="sp_celphones" type="tel" id="homephone">
+						</p:inputText>
+			        	
+			        	<h:outputLabel value="Tipo do Logradouro" />
+						<p:selectOneMenu value="#{cadastroFornecedorMB.tipoLogradouro.id}">
+							<f:selectItem itemLabel="Selecione o Tipo de Logradouro" itemValue="" />
+							<f:selectItems value="#{cadastroFornecedorMB.tiposDeLogradouros}" var="tipoLogradouro" itemLabel="#{tipoLogradouro.nome}" itemValue="#{tipoLogradouro.id}"></f:selectItems>
+						</p:selectOneMenu>
+			        	
+				        <h:outputLabel value="Logradouro" />
+						<p:inputText value="#{cadastroFornecedorMB.endereco.logradouro}" />
+						
+						<h:outputLabel value="Número" />
+						<p:inputText value="#{cadastroFornecedorMB.endereco.numero}" />
+						
+						<h:outputLabel value="Complemento" />
+						<p:inputText value="#{cadastroFornecedorMB.endereco.complemento}" />
+						
+						<h:outputLabel value="Bairro" />
+						<p:inputText value="#{cadastroFornecedorMB.endereco.bairro}" />
+						
+						<h:outputLabel value="CEP" />
+						<p:inputText value="#{cadastroFornecedorMB.endereco.cep}" mask="99999-999" />
+			        
+				        <h:outputLabel value="Tipo de Endereço" />
+						<p:selectOneMenu value="#{cadastroFornecedorMB.tipoEnderecoString}">
+						    <f:selectItem itemLabel="Selecione o Tipo de Endereço" />
+						    <f:selectItems var="rotuloTipoEndereco" value="#{enumTipoEnderecoSelectOneMB.tiposDeEnderecos}" itemValue="#{rotuloTipoEndereco}" itemLabel="#{rotuloTipoEndereco.rotulo}" />
+						</p:selectOneMenu>
+			        
+			            <p:outputLabel for="pais" value="País: " />
+			            <p:selectOneMenu id="pais" value="#{cadastroFornecedorMB.pais.id}" style="width:150px">
+			                <p:ajax listener="#{cadastroFornecedorMB.onPaisChange()}" update="estado cidade" />
+			                <f:selectItem itemLabel="Selecione o País" itemValue="" noSelectionOption="true" />
+			                <f:selectItems value="#{cadastroFornecedorMB.paises}" var="pais" itemLabel="#{pais.nome}" itemValue="#{pais.id}"></f:selectItems>
+			            </p:selectOneMenu>
+			 
+			            <p:outputLabel for="estado" value="Estado: " />
+			            <p:selectOneMenu id="estado" value="#{cadastroFornecedorMB.estado.id}" style="width:150px">
+			                <p:ajax listener="#{cadastroFornecedorMB.onEstadoChange()}" update="cidade" />
+			                <f:selectItem itemLabel="Selecione o Estado" itemValue="" noSelectionOption="true" />
+			                <f:selectItems value="#{cadastroFornecedorMB.estados}" var="estado" itemLabel="#{estado.nome}" itemValue="#{estado.id}"></f:selectItems>
+			            </p:selectOneMenu>
+			            
+			            <p:outputLabel for="cidade" value="Cidade: " />
+			            <p:selectOneMenu id="cidade" value="#{cadastroFornecedorMB.cidade.id}" style="width:150px">
+			                <f:selectItem itemLabel="Selecione a Cidade" itemValue="" noSelectionOption="true" />
+			                <f:selectItems value="#{cadastroFornecedorMB.cidades}" var="cidade" itemLabel="#{cidade.nome}" itemValue="#{cidade.id}"></f:selectItems>
+			            </p:selectOneMenu>
+				</h:panelGrid>
+				
+				<p:separator />
+				
+				<p:commandButton value="Cancelar" action="#{cadastroFornecedorMB.cancelar()}" immediate="true" icon="ui-icon-cancel"></p:commandButton>
+				<p:commandButton value="Salvar" action="#{cadastroFornecedorMB.salvar()}" ajax="false" icon="ui-icon-check"></p:commandButton>
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>

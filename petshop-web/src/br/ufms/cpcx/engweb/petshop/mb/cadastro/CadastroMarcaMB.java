@@ -1,14 +1,12 @@
 package br.ufms.cpcx.engweb.petshop.mb.cadastro;
 
 import java.io.Serializable;
-
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-
 import br.ufms.cpcx.engweb.petshop.biz.CadastroMarca;
 import br.ufms.cpcx.engweb.petshop.model.Marca;
 
@@ -16,7 +14,7 @@ import br.ufms.cpcx.engweb.petshop.model.Marca;
 @ConversationScoped
 public class CadastroMarcaMB implements Serializable {
 
-	private static final long serialVersionUID = 3779680976513271996L;
+	private static final long serialVersionUID = -8875530860200160165L;
 
 	private Marca marca;
 

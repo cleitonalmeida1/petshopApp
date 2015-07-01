@@ -52,7 +52,7 @@ public class ListagemMarcasMB {
 	}
 
 	public String editar() {
-		return "cadastroMarcas?faces-redirect=true";
+		return "cadastroMarca?faces-redirect=true";
 	}
 
 	public void remover(Marca marca) {

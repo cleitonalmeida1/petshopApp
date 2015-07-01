@@ -24,14 +24,17 @@ public class ItemVenda implements Serializable {
 	@GeneratedValue(generator = "item_venda_seq_gen", strategy = GenerationType.SEQUENCE)
 	@Column(name = "id", nullable = false)
 	private Long id;
-	 //venda
-	@OneToOne(optional = false)
-	private Venda idVenda;
     //produto
     @OneToOne(optional = false)
     private Produto idProduto;
+    @Column(nullable=false)
     private Long qtde;
+    @Column(nullable=false)
     private BigDecimal valorUnitario;
+    @Column(nullable=false)  
+    private double desconto;
+    @Column(nullable=false)  
+    private double valorTotal;
     
     
     public ItemVenda() {
@@ -47,14 +50,6 @@ public class ItemVenda implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Venda getIdVenda() {
-		return idVenda;
-	}
-
-	public void setIdVenda(Venda idVenda) {
-		this.idVenda = idVenda;
 	}
 
 	public Produto getIdProduto() {
