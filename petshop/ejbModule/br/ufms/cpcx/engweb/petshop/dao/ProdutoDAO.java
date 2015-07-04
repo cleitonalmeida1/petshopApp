@@ -35,6 +35,11 @@ public class ProdutoDAO {
 	public void removerProduto(Produto produto) {
 		em.remove(produto);
 	}
+	
+	public void diminuirProdutoDoEstoque(Long  idProduto, Integer qtde) {
+		Query query = em.createQuery("UPDATE Produto a SET a.qtde = a.qtde-"+qtde+" WHERE a.id = "+idProduto);
+		query.executeUpdate();
+	}
 
 	public void removerProduto(Long id) {
 		Query query = em

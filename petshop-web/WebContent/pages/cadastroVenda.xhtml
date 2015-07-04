@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	template="/WEB-INF/template/template-principal.xhtml">
+
+	<ui:define name="conteudo">
+		<p:panel header="Cadastro de Venda" footer="Inclusão de Nova Venda" toggleable="true">
+			<h:form id="form1">
+				<h:panelGrid  columns="2" cellpadding="5" style="width: 100%;">
+					<h:panelGrid columns="2" id="panelinfo" cellpadding="5" style="width: 20%;">
+						<h:outputLabel value="Cliente:" />
+						<p:selectOneMenu id="cliente" disabled="#{cadastroVendaMB.novavenda}" value="#{cadastroVendaMB.idCliente}" style="width:150px; float:left;" filter="true" filterMatchMode="startsWith">
+			            	<f:selectItem itemLabel="Selecione o Cliente" itemValue="" noSelectionOption="true" />
+			            	<f:selectItems value="#{cadastroVendaMB.clientes}" var="cliente" itemLabel="#{cliente.nomeRazaosocial}" itemValue="#{cliente.id}"></f:selectItems>
+			            </p:selectOneMenu>
+			            
+						<p:outputLabel for="cargo" value="Cargo: " />
+			            <p:selectOneMenu id="cargo" disabled="#{cadastroVendaMB.novavenda}" value="#{cadastroVendaMB.idCargo}" style="width:150px" filter="true" filterMatchMode="startsWith">
+			            	<f:selectItem itemLabel="Selecione o Cargo" itemValue="" noSelectionOption="true" />
+			            	<f:selectItems value="#{cadastroVendaMB.cargos}" var="cargo" itemLabel="#{cargo.nome}" itemValue="#{cargo.id}"></f:selectItems>
+			            	<p:ajax listener="#{cadastroVendaMB.onCargoChange()}" update="funcionario" />
+			            </p:selectOneMenu>
+			            
+			            <p:outputLabel for="funcionario" value="Vendedor: " />
+			            <p:selectOneMenu id="funcionario" disabled="#{cadastroVendaMB.novavenda}" value="#{cadastroVendaMB.idVendedor}" style="width:150px" filter="true" filterMatchMode="startsWith">
+			            	<f:selectItem itemLabel="Selecione o Vendedor" itemValue="" noSelectionOption="true" />
+			            	<f:selectItems value="#{cadastroVendaMB.funcionarios}" var="funcionario" itemLabel="#{funcionario.nome}" itemValue="#{funcionario.id}"></f:selectItems>
+			            </p:selectOneMenu>
+			            
+			            <p:outputLabel for="valortotal" value="Valor Total: " />
+			            <h:outputText id="valortotal" thousandSeparator="." decimalSeparator="," decimalPlaces="2" value="R$ #{cadastroVendaMB.venda.valorTotal}"/>
+						
+			            
+					</h:panelGrid>
+
+					<h:panelGrid columns="1" cellpadding="0" style="width: 100%; min-width: 600px;">
+						<p:panel widgetVar="paneladdproduto" id="addproduto"  header="Produto" style="display:none; width:100%; margin: 0 auto;  min-heigth: 300px;">
+							<h:panelGrid columns="4" cellpadding="5" style="">
+								<h:outputLabel value="Produto:" />
+								<p:selectOneMenu id="produto" value="#{cadastroVendaMB.idProduto}" style="width:200px; overflow: hidden;" filter="true" filterMatchMode="startsWith">
+					            	<f:selectItem itemLabel="Selecione o Produto" itemValue="" noSelectionOption="true" />
+					            	<f:selectItems value="#{cadastroVendaMB.produtos}" var="produto" itemLabel="#{produto.nome}" itemValue="#{produto.id}"></f:selectItems>
+					            </p:selectOneMenu>
+					            
+					            <h:outputLabel value="Quantidade: " />
+								<p:inputText value="#{cadastroVendaMB.qtde}" />
+							</h:panelGrid>
+							<p:commandButton value="Cancelar" onclick="$(buscaElementoPorTagAtributoEValorAtributo(document, 'div', 'data-widget', 'paneladdproduto')).hide();" immediate="true" icon="ui-icon-cancel"></p:commandButton>
+							<p:commandButton value="Salvar" oncomplete="$(buscaElementoPorTagAtributoEValorAtributo(document, 'div', 'data-widget', 'paneladdproduto')).hide();" action="#{cadastroVendaMB.adicionarItemVenda()}" update=":form1:valortotal tabela" ajax="true" icon="ui-icon-check"></p:commandButton>		        	
+				        </p:panel>
+					</h:panelGrid>
+				</h:panelGrid>
+				
+				<br></br>		
+				<p:commandButton value="Adicionar Produto" disabled="#{cadastroVendaMB.novavenda}" actionListener="#{cadastroVendaMB.carregarProdutos()}" oncomplete="$(buscaElementoPorTagAtributoEValorAtributo(document, 'div', 'data-widget', 'paneladdproduto')).show();"  ajax="true" icon="ui-icon-trash" update="addproduto"></p:commandButton>
+				<br></br>
+				<br></br>
+				
+				<p:dataTable rendered="#{cadastroVendaMB.mostrarTabela}" id="tabela" rowIndexVar="indiceLinha" showEffect="fade" var="itemvenda" value="#{cadastroVendaMB.itensVenda}" resizableColumns="true" emptyMessage="Nenhum Produto/Serviço Adicionado.">
+						<p:column headerText="Id Item" width="5%" styleClass="coluna">
+							<h:outputText value="#{indiceLinha+1}"/>
+						</p:column>
+						
+						<p:column headerText="Nome do Produto" width="30%" styleClass="coluna">
+							<h:outputText value="#{itemvenda.nome}" />
+						</p:column>
+						
+						<p:column headerText="Marca" width="20%" styleClass="coluna">
+							<h:outputText value="#{itemvenda.produto.marca.nome}" />
+						</p:column>
+						
+						<p:column headerText="Valor Unitário" width="6%" styleClass="coluna">
+							<h:outputText id="valortotal" thousandSeparator="." decimalSeparator="," decimalPlaces="2" value="R$ #{itemvenda.valorUnitario}"/>
+						</p:column>
+						
+						<p:column headerText="Quantidade" width="5%" styleClass="coluna">
+							<h:outputText value="#{itemvenda.qtde}" />
+						</p:column>
+						
+						<p:column headerText="Valor Total" width="5%" styleClass="coluna">
+							<h:outputText id="valortotal" thousandSeparator="." decimalSeparator="," decimalPlaces="2" value="R$ #{itemvenda.valorTotal}"/>
+						</p:column>
+						
+						<p:column width="5%" headerText="Ações" styleClass="coluna">
+							<p:commandButton action="#{cadastroVendaMB.editarItemVenda(itemvenda)}" disabled="#{cadastroVendaMB.novavenda}" update="tabela" ajax="true" icon="ui-icon-pencil">
+								<f:setPropertyActionListener value="#{itemvenda}" target="#{cadastroVendaMB.itemVenda}">
+								</f:setPropertyActionListener>
+							</p:commandButton>
+							<p:commandButton action="#{cadastroVendaMB.removerItemVenda(itemvenda)}" disabled="#{cadastroVendaMB.novavenda}" ajax="true" icon="ui-icon-trash" update=":form1:valortotal tabela">
+							</p:commandButton>
+						</p:column>
+					</p:dataTable>
+					<br></br>					
+				<p:commandButton value="#{cadastroVendaMB.textoBotaoCancelarVoltar()}" action="#{cadastroVendaMB.cancelar()}" immediate="true" icon="ui-icon-cancel"></p:commandButton>
+				<p:commandButton value="Salvar" disabled="#{cadastroVendaMB.novavenda}" action="#{cadastroVendaMB.salvar()}" ajax="false" icon="ui-icon-check"></p:commandButton>
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>

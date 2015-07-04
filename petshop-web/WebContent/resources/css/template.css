@@ -8,6 +8,7 @@ body{
 
 .menu{
 	border: none;
+	width: 185px !important;
 }
 
 .conteudo{

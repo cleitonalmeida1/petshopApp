@@ -29,20 +29,20 @@
 						<p:inputText value="#{cadastroProdutoMB.produto.qtde}" />
 						
 						<h:outputLabel value="Marca" />
-						<p:selectOneMenu value="#{cadastroProdutoMB.idMarca}">
+						<p:selectOneMenu value="#{cadastroProdutoMB.idMarca}" filter="true" filterMatchMode="startsWith">
 							<f:selectItem itemLabel="Selecione a Marca" itemValue="" />
 							<f:selectItems value="#{cadastroProdutoMB.marcas}" var="marca" itemLabel="#{marca.nome}" itemValue="#{marca.id}"></f:selectItems>
 						</p:selectOneMenu>
 						
 						<h:outputLabel value="Categoria" />
-						<p:selectOneMenu value="#{cadastroProdutoMB.idCategoria}">
+						<p:selectOneMenu value="#{cadastroProdutoMB.idCategoria}" filter="true" filterMatchMode="startsWith">
 							<f:selectItem itemLabel="Selecione a Categoria" itemValue="" />
 							<f:selectItems value="#{cadastroProdutoMB.categorias}" var="categoria"
 								itemLabel="#{categoria.nome}" itemValue="#{categoria.id}"></f:selectItems>
 						</p:selectOneMenu>
 						
 						<h:outputLabel value="Fornecedor" />
-						<p:selectOneMenu value="#{cadastroProdutoMB.idFornecedor}">
+						<p:selectOneMenu value="#{cadastroProdutoMB.idFornecedor}" filter="true" filterMatchMode="startsWith">
 							<f:selectItem itemLabel="Selecione o Fornecedor" itemValue="" />
 							<f:selectItems value="#{cadastroProdutoMB.fornecedores}" var="fornecedor"
 								itemLabel="#{fornecedor.nome}" itemValue="#{fornecedor.id}"></f:selectItems>

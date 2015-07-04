@@ -6,9 +6,10 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.Conversation;
-import javax.enterprise.context.ConversationScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import org.primefaces.model.UploadedFile;
 
@@ -23,15 +24,13 @@ import br.ufms.cpcx.engweb.petshop.model.Foto;
 import br.ufms.cpcx.engweb.petshop.model.Marca;
 import br.ufms.cpcx.engweb.petshop.model.Produto;
 
-@Named("cadastroProdutoMB")
-@ConversationScoped
+@ManagedBean(name="cadastroProdutoMB")
+@ViewScoped
 public class CadastroProdutoMB implements Serializable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -6856248927320753056L;
 	private Produto produto;
+	private Long idProduto;
 	private Long idCategoria;
 	private Long idMarca;
 	private List<Marca> marcas;
@@ -61,25 +60,40 @@ public class CadastroProdutoMB implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		// Carrega uma lista de Marcas para serem apresentadas no OneSelectMenu (combobox)
-		marcas = cadastroMarca.listarMarcas();
 		
-		// Deixa nenhuma Categoria selecionada
-		idMarca = null;
-		
-		// Carrega uma lista de Categorias para serem apresentadas no OneSelectMenu (combobox)
-		categorias = cadastroCategoria.listarCategorias();
-				
-		// Deixa nenhuma Categoria selecionada
-		idCategoria = null;
-		
-		// Carrega uma lista de Fornecedores para serem apresentados no OneSelectMenu (combobox)
-		fornecedores = cadastroFornecedor.listarFornecedores();
-		
-		// Deixa nenhum Fornecedor selecionado
-		idFornecedor = null;
-				
-		produto = new Produto();
+		String id = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
+	       
+        if(id != null){
+        	idProduto = Long.valueOf(id);
+        }
+    	if(idProduto != null){ //editando
+    		produto = cadastroProduto.buscarProdutoPorId(idProduto);
+    		idMarca = produto.getMarca().getId();
+    		idCategoria = produto.getCategoria().getId();
+    		idFornecedor = produto.getFornecedor().getId();
+    	}else{
+    		produto = new Produto();
+    		// Deixa nenhuma Categoria selecionada
+    		idMarca = null;
+    		// Deixa nenhuma Categoria selecionada
+    		idCategoria = null;
+    		// Deixa nenhum Fornecedor selecionado
+    		idFornecedor = null;
+    	}
+    	if(marcas == null){
+    		// Carrega uma lista de Marcas para serem apresentadas no OneSelectMenu (combobox)
+    		marcas = cadastroMarca.listarMarcas();
+    	}
+    	
+    	if(categorias == null){
+    		// Carrega uma lista de Categorias para serem apresentadas no OneSelectMenu (combobox)
+    		categorias = cadastroCategoria.listarCategorias();
+    	}
+    	
+    	if(fornecedores == null){
+    		// Carrega uma lista de Fornecedores para serem apresentados no OneSelectMenu (combobox)
+    		fornecedores = cadastroFornecedor.listarFornecedores();
+    	}
 	}
 
 	public String salvar(UploadedFile arquivo) {
@@ -108,9 +122,6 @@ public class CadastroProdutoMB implements Serializable {
 	}
 
 	public String cancelar() {
-		if (!conversation.isTransient()) {
-			conversation.end();
-		}
 		return "listagemProdutos?faces-redirect=true";
 	}
 
@@ -119,9 +130,6 @@ public class CadastroProdutoMB implements Serializable {
 	}
 
 	public void setProduto(Produto produto) {
-		if (produto.getId() != null && conversation.isTransient()) {
-			conversation.begin();
-		}
 		this.produto = produto;
 	}
 	
@@ -179,5 +187,13 @@ public class CadastroProdutoMB implements Serializable {
 
 	public void setConversation(Conversation conversation) {
 		this.conversation = conversation;
+	}
+
+	public Long getIdProduto() {
+		return idProduto;
+	}
+
+	public void setIdProduto(Long idProduto) {
+		this.idProduto = idProduto;
 	}
 }

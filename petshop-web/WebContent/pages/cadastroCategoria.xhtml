@@ -11,14 +11,12 @@
 		<p:panel header="Cadastro de Categoria" footer="Inclusão de Nova Categoria"
 			toggleable="true">
 			<h:form>
-					<h:panelGrid columns="2" cellpadding="2" style="">
-						<h:outputLabel value="Nome" />
-						<p:inputText value="#{cadastroCategoriaMB.categoria.nome}" />						
-					</h:panelGrid>
-					
-					<h:panelGrid columns="2" cellpadding="2" style="">
-						<h:outputLabel value="Descrição" />
-						<p:inputText value="#{cadastroCategoriaMB.categoria.descricao}" />						
+					<h:panelGrid columns="2" cellpadding="5" style="">
+						<h:outputLabel value="Nome:" />
+						<p:inputText value="#{cadastroCategoriaMB.categoria.nome}" />
+						
+						<h:outputLabel value="Descrição:" />
+						<p:inputText value="#{cadastroCategoriaMB.categoria.descricao}" />								
 					</h:panelGrid>
 					<p:commandButton value="Cancelar" action="#{cadastroCategoriaMB.cancelar()}" immediate="true" icon="ui-icon-cancel"></p:commandButton>
 					<p:commandButton value="Salvar" action="#{cadastroCategoriaMB.salvar()}" ajax="false" icon="ui-icon-check"></p:commandButton>

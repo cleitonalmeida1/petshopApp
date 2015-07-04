@@ -47,7 +47,7 @@
 						</p:inputText>
 						
 						<h:outputLabel value="Cargo" />
-						<p:selectOneMenu value="#{cadastroFuncionarioMB.cargo.id}">
+						<p:selectOneMenu value="#{cadastroFuncionarioMB.cargo.id}" filter="true" filterMatchMode="startsWith">
 							<f:selectItem itemLabel="Selecione o Cargo" itemValue="" />
 							<f:selectItems value="#{cadastroFuncionarioMB.cargos}" var="cargo" itemLabel="#{cargo.nome}" itemValue="#{cargo.id}"></f:selectItems>
 						</p:selectOneMenu>
@@ -56,7 +56,7 @@
 						<pe:inputNumber thousandSeparator="." decimalSeparator="," decimalPlaces="2" value="#{cadastroFuncionarioMB.funcionario.salario}"></pe:inputNumber>
 			        	
 			        	<h:outputLabel value="Tipo do Logradouro" />
-						<p:selectOneMenu value="#{cadastroFuncionarioMB.tipoLogradouro.id}">
+						<p:selectOneMenu value="#{cadastroFuncionarioMB.tipoLogradouro.id}" filter="true" filterMatchMode="startsWith">
 							<f:selectItem itemLabel="Selecione o Tipo de Logradouro" itemValue="" />
 							<f:selectItems value="#{cadastroFuncionarioMB.tiposDeLogradouros}" var="tipoLogradouro" itemLabel="#{tipoLogradouro.nome}" itemValue="#{tipoLogradouro.id}"></f:selectItems>
 						</p:selectOneMenu>
@@ -77,27 +77,27 @@
 						<p:inputText value="#{cadastroFuncionarioMB.endereco.cep}" mask="99999-999" />
 			        
 				        <h:outputLabel value="Tipo de Endereço" />
-						<p:selectOneMenu value="#{cadastroFuncionarioMB.tipoEnderecoString}">
+						<p:selectOneMenu value="#{cadastroFuncionarioMB.tipoEnderecoString}" filter="true" filterMatchMode="startsWith">
 						    <f:selectItem itemLabel="Selecione o Tipo de Endereço" />
 						    <f:selectItems var="rotuloTipoEndereco" value="#{enumTipoEnderecoSelectOneMB.tiposDeEnderecos}" itemValue="#{rotuloTipoEndereco}" itemLabel="#{rotuloTipoEndereco.rotulo}" />
 						</p:selectOneMenu>
 			        
 			            <p:outputLabel for="pais" value="País: " />
-			            <p:selectOneMenu id="pais" value="#{cadastroFuncionarioMB.pais.id}" style="width:150px">
+			            <p:selectOneMenu id="pais" value="#{cadastroFuncionarioMB.pais.id}" style="width:150px" filter="true" filterMatchMode="startsWith">
 			                <p:ajax listener="#{cadastroFuncionarioMB.onPaisChange()}" update="estado cidade" />
 			                <f:selectItem itemLabel="Selecione o País" itemValue="" noSelectionOption="true" />
 			                <f:selectItems value="#{cadastroFuncionarioMB.paises}" var="pais" itemLabel="#{pais.nome}" itemValue="#{pais.id}"></f:selectItems>
 			            </p:selectOneMenu>
 			 
 			            <p:outputLabel for="estado" value="Estado: " />
-			            <p:selectOneMenu id="estado" value="#{cadastroFuncionarioMB.estado.id}" style="width:150px">
+			            <p:selectOneMenu id="estado" value="#{cadastroFuncionarioMB.estado.id}" style="width:150px" filter="true" filterMatchMode="startsWith">
 			                <p:ajax listener="#{cadastroFuncionarioMB.onEstadoChange()}" update="cidade" />
 			                <f:selectItem itemLabel="Selecione o Estado" itemValue="" noSelectionOption="true" />
 			                <f:selectItems value="#{cadastroFuncionarioMB.estados}" var="estado" itemLabel="#{estado.nome}" itemValue="#{estado.id}"></f:selectItems>
 			            </p:selectOneMenu>
 			            
 			            <p:outputLabel for="cidade" value="Cidade: " />
-			            <p:selectOneMenu id="cidade" value="#{cadastroFuncionarioMB.cidade.id}" style="width:150px">
+			            <p:selectOneMenu id="cidade" value="#{cadastroFuncionarioMB.cidade.id}" style="width:150px" filter="true" filterMatchMode="startsWith">
 			                <f:selectItem itemLabel="Selecione a Cidade" itemValue="" noSelectionOption="true" />
 			                <f:selectItems value="#{cadastroFuncionarioMB.cidades}" var="cidade" itemLabel="#{cidade.nome}" itemValue="#{cidade.id}"></f:selectItems>
 			            </p:selectOneMenu>

@@ -51,7 +51,7 @@
 					</p:inputText>
 					
 					<h:outputLabel value="Tipo do Logradouro" />
-					<p:selectOneMenu value="#{cadastroClienteMB.tipoLogradouro.id}">
+					<p:selectOneMenu value="#{cadastroClienteMB.tipoLogradouro.id}" filter="true" filterMatchMode="startsWith">
 						<f:selectItem itemLabel="Selecione o Tipo de Logradouro" itemValue="" />
 						<f:selectItems value="#{cadastroClienteMB.tiposDeLogradouros}" var="tipoLogradouro" itemLabel="#{tipoLogradouro.nome}" itemValue="#{tipoLogradouro.id}"></f:selectItems>
 					</p:selectOneMenu>
@@ -78,21 +78,21 @@
 					</p:selectOneMenu>
 					
 					<p:outputLabel for="pais" value="País: " />
-		            <p:selectOneMenu id="pais" value="#{cadastroClienteMB.pais.id}" style="width:150px">
+		            <p:selectOneMenu id="pais" value="#{cadastroClienteMB.pais.id}" style="width:150px" filter="true" filterMatchMode="startsWith">
 		            	<f:selectItem itemLabel="Selecione o País" itemValue="" noSelectionOption="true" />
 		            	<f:selectItems value="#{cadastroClienteMB.paises}" var="pais" itemLabel="#{pais.nome}" itemValue="#{pais.id}"></f:selectItems>
 		            	<p:ajax listener="#{cadastroClienteMB.onPaisChange()}" update="estado cidade" />
 		            </p:selectOneMenu>
 		            
 		            <p:outputLabel for="estado" value="Estado: " />
-		            <p:selectOneMenu id="estado" value="#{cadastroClienteMB.estado.id}" style="width:150px">
+		            <p:selectOneMenu id="estado" value="#{cadastroClienteMB.estado.id}" style="width:150px" filter="true" filterMatchMode="startsWith">
 		            	<f:selectItem itemLabel="Selecione o Estado" itemValue="" noSelectionOption="true" />
 		            	<f:selectItems value="#{cadastroClienteMB.estados}" var="estado" itemLabel="#{estado.nome}" itemValue="#{estado.id}"></f:selectItems>
 		            	<p:ajax listener="#{cadastroClienteMB.onEstadoChange()}" update="cidade" />
 		            </p:selectOneMenu>
 		            
 		            <p:outputLabel for="cidade" value="Cidade: " />
-		            <p:selectOneMenu id="cidade" value="#{cadastroClienteMB.cidade.id}" style="width:150px">
+		            <p:selectOneMenu id="cidade" value="#{cadastroClienteMB.cidade.id}" style="width:150px" filter="true" filterMatchMode="startsWith">
 		            	<f:selectItem itemLabel="Selecione a Cidade" itemValue="" noSelectionOption="true" />
 		            	<f:selectItems value="#{cadastroClienteMB.cidades}" var="cidade" itemLabel="#{cidade.nome}" itemValue="#{cidade.id}"></f:selectItems>
 		            </p:selectOneMenu>

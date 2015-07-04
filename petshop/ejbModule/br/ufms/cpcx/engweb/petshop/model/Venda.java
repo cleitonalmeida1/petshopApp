@@ -1,6 +1,8 @@
 package br.ufms.cpcx.engweb.petshop.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -14,8 +16,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -33,25 +35,41 @@ public class Venda implements Serializable {
 	@Column(name = "id", nullable = false)
 	private Long id;
 	// cliente
-	@OneToOne(optional = false)
+	@ManyToOne(optional = false)
+ 	@JoinColumn(name = "id_cliente")
 	private Cliente Cliente;
 	// vendedor
-	@OneToOne(optional = false)
+	@ManyToOne(optional = false)
+ 	@JoinColumn(name = "id_vendedor")
 	private Funcionario Vendedor;
 
 	@Basic(optional = false)
-	@NotNull
+	//@NotNull
 	@Column(name = "datahoravenda", nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date datahoravenda;
 	
 	private String observacao;
 	
-	private double desconto;
+	@NotNull
+	private BigDecimal valorTotal;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinTable(name = "venda_itensvenda", joinColumns = { @JoinColumn(name = "VENDA_ID", referencedColumnName = "id") }, inverseJoinColumns = { @JoinColumn(name = "ITEMVENDA_ID", referencedColumnName = "id") })
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+	@JoinTable(name = "venda_itensvenda", joinColumns = { @JoinColumn(name = "VENDA_ID", referencedColumnName = "id", nullable = false) }, inverseJoinColumns = { @JoinColumn(name = "ITEMVENDA_ID", referencedColumnName = "id", nullable = false) })
 	private List<ItemVenda> itensVenda;
+	
+	public String getDataHoraString(Date data){
+		return new SimpleDateFormat("dd/MM/yyyy - HH:mm").format(data);
+	}
+	
+	public String getDataString(Date data){
+		return new SimpleDateFormat("dd/MM/yyyy").format(data);
+	}
+	
+	public String getHoraString(Date data){
+		return new SimpleDateFormat("HH:mm").format(data);
+	}
+	
 
 	public List<ItemVenda> getItensVenda() {
 		return itensVenda;
@@ -108,11 +126,11 @@ public class Venda implements Serializable {
 		this.observacao = observacao;
 	}
 
-	public double getDesconto() {
-		return desconto;
+	public BigDecimal getValorTotal() {
+		return valorTotal;
 	}
 
-	public void setDesconto(double desconto) {
-		this.desconto = desconto;
+	public void setValorTotal(BigDecimal valorTotal) {
+		this.valorTotal = valorTotal;
 	}
 }

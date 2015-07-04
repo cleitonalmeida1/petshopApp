@@ -6,14 +6,12 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.inject.Named;
 
 import br.ufms.cpcx.engweb.petshop.biz.CadastroProduto;
 import br.ufms.cpcx.engweb.petshop.model.Produto;
 
-@ManagedBean
+@ManagedBean(name = "listagemProdutosMB")
 @ViewScoped
-@Named("ListagemProdutosMB")
 public class ListagemProdutosMB {
 	private List<Produto> produtos;
 	private boolean mostrarTabela = true;
@@ -27,8 +25,8 @@ public class ListagemProdutosMB {
 		produtos = cadastroProduto.listarProdutos();
 	}
 
-	public String editar() {
-		return "cadastroProduto?faces-redirect=true";
+	public String editar(Long idProduto) {
+		return "cadastroProduto?faces-redirect=true&id="+idProduto.toString();
 	}
 
 	public void remover(Produto produto) {

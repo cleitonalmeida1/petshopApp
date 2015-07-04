@@ -8,41 +8,35 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_item_venda")
 public class ItemVenda implements Serializable {
-	
+
 	private static final long serialVersionUID = 444800789786099858L;
-
-
 	@Id
 	@SequenceGenerator(name = "item_venda_seq_gen", sequenceName = "item_venda_seq", initialValue = 1, allocationSize = 1)
 	@GeneratedValue(generator = "item_venda_seq_gen", strategy = GenerationType.SEQUENCE)
 	@Column(name = "id", nullable = false)
 	private Long id;
-    //produto
-    @OneToOne(optional = false)
-    private Produto idProduto;
-    @Column(nullable=false)
-    private Long qtde;
-    @Column(nullable=false)
-    private BigDecimal valorUnitario;
-    @Column(nullable=false)  
-    private double desconto;
-    @Column(nullable=false)  
-    private double valorTotal;
-    
-    
-    public ItemVenda() {
-    }
+	// produto
+	@ManyToOne(optional = false)
+ 	@JoinColumn(name = "id_produto")
+	private Produto produto;
+	private String nome;
+	@Column(nullable = false)
+	private Integer qtde;
+	@Column(nullable = false)
+	private BigDecimal valorUnitario;
+	@Column(nullable = false)
+	private BigDecimal valorTotal;
 
-    public ItemVenda(Long id) {
-        this.id = id;
-    }
+	public ItemVenda() {
+	}
 
 	public Long getId() {
 		return id;
@@ -52,19 +46,27 @@ public class ItemVenda implements Serializable {
 		this.id = id;
 	}
 
-	public Produto getIdProduto() {
-		return idProduto;
+	public Produto getProduto() {
+		return produto;
 	}
 
-	public void setIdProduto(Produto idProduto) {
-		this.idProduto = idProduto;
+	public void setProduto(Produto produto) {
+		this.produto = produto;
 	}
 
-	public Long getQtde() {
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Integer getQtde() {
 		return qtde;
 	}
 
-	public void setQtde(Long qtde) {
+	public void setQtde(Integer qtde) {
 		this.qtde = qtde;
 	}
 
@@ -76,7 +78,11 @@ public class ItemVenda implements Serializable {
 		this.valorUnitario = valorUnitario;
 	}
 
-    
-	
-}
+	public BigDecimal getValorTotal() {
+		return valorTotal;
+	}
 
+	public void setValorTotal(BigDecimal valorTotal) {
+		this.valorTotal = valorTotal;
+	}
+}

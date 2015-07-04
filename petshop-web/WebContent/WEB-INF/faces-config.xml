@@ -25,11 +25,6 @@
 		<!-- Permissão de Navegação -->
 		<from-view-id>*</from-view-id>
 		
-		<navigation-case>
-			<from-outcome>dropdown</from-outcome>
-			<to-view-id>/pages/dropdown.xhtml</to-view-id>
-		</navigation-case>
-		
 		<!-- Início (URLs) -->
 		<navigation-case>
 			<from-outcome>index</from-outcome>
@@ -165,16 +160,6 @@
 		<!-- ############################################################ -->
 		
 		<!-- ################ Financeiro/Serviços (URLs) ################ -->
-		<!-- Agendamentos (URLs) -->
-		<navigation-case>
-			<from-outcome>listagemAgendamentos</from-outcome>
-			<to-view-id>/pages/listagemAgendamentos.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>cadastroAgendamento</from-outcome>
-			<to-view-id>/pages/cadastroAgendamento.xhtml</to-view-id>
-		</navigation-case>
-		
 		<!-- Vendas (URLs) -->
 		<navigation-case>
 			<from-outcome>listagemVendas</from-outcome>
@@ -183,50 +168,6 @@
 		<navigation-case>
 			<from-outcome>cadastroVenda</from-outcome>
 			<to-view-id>/pages/cadastroVenda.xhtml</to-view-id>
-		</navigation-case>
-		<!-- ############################################################ -->
-		
-		<!-- ################# Controle de Acesso (URLs) ################ -->
-		<!-- Permissões de Acesso (URLs) -->
-		<navigation-case>
-			<from-outcome>permissoesAcesso</from-outcome>
-			<to-view-id>/pages/permissoesAcesso.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>cadastroPermissoesAcesso</from-outcome>
-			<to-view-id>/pages/cadastroPermissoesAcesso.xhtml</to-view-id>
-		</navigation-case>
-		
-		<!-- Grupos de Usuários (URLs) -->
-		<navigation-case>
-			<from-outcome>listagemGruposUsuarios</from-outcome>
-			<to-view-id>/pages/listagemGruposUsuarios.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>cadastroGrupoUsuario</from-outcome>
-			<to-view-id>/pages/cadastroGrupoUsuario.xhtml</to-view-id>
-		</navigation-case>
-		
-		<!-- Usuários (URLs) -->
-		<navigation-case>
-			<from-outcome>listagemUsuarios</from-outcome>
-			<to-view-id>/pages/listagemUsuarios.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>cadastroGrupoUsuario</from-outcome>
-			<to-view-id>/pages/cadastroGrupoUsuario.xhtml</to-view-id>
-		</navigation-case>
-		<!-- ############################################################ -->
-		
-		<!-- ################# Configurações (URLs) ################ -->
-		<!-- Sistema (URLs) -->
-		<navigation-case>
-			<from-outcome>configSistema</from-outcome>
-			<to-view-id>/pages/configSistema.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>editarConfigSistema</from-outcome>
-			<to-view-id>/pages/editarConfigSistema.xhtml</to-view-id>
 		</navigation-case>
 		<!-- ############################################################ -->
 	</navigation-rule>

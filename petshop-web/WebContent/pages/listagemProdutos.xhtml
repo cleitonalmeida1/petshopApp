@@ -23,12 +23,12 @@
 						</p:column>
 						
 						<p:column headerText="Marca" width="10%" styleClass="coluna">
-							<h:outputText value="#{produto.marca}" />
+							<h:outputText value="#{produto.marca.nome}" />
 						</p:column>
 						
 						<p:column headerText="Preço" width="10%" styleClass="coluna">
-							<h:outputText value="#{produto.valorUnitario}">
-								<f:convertNumber pattern="#,000.00" locale="pt_BR"/>
+							<h:outputText value="#{produto.valorUnitario}" id="valortotal" thousandSeparator="." decimalSeparator="," decimalPlaces="2">
+								
 							</h:outputText>
 						</p:column>
 						
@@ -37,7 +37,7 @@
 						</p:column>
 						
 						<p:column width="10%" headerText="Ações" styleClass="coluna">
-							<p:commandButton action="#{listagemProdutosMB.editar()}" icon="ui-icon-pencil">
+							<p:commandButton action="#{listagemProdutosMB.editar(cadastroProdutoMB.produto.id)}" icon="ui-icon-pencil">
 								<f:setPropertyActionListener value="#{produto}" target="#{cadastroProdutoMB.produto}">
 								</f:setPropertyActionListener>
 							</p:commandButton>

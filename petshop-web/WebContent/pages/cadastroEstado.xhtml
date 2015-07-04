@@ -19,7 +19,7 @@
 					<p:inputText value="#{cadastroEstadoMB.estado.uf}" maxlength="#{cadastroEstadoMB.estado.tamMaxSigla}" onkeyup="value=value.toUpperCase()"/>
 					
 					<h:outputLabel value="País" />
-					<p:selectOneMenu value="#{cadastroEstadoMB.idPais}">
+					<p:selectOneMenu value="#{cadastroEstadoMB.idPais}" filter="true" filterMatchMode="startsWith">
 						<f:selectItem itemLabel="Selecione o País" itemValue="" />
 						<f:selectItems value="#{cadastroEstadoMB.paises}" var="pais" itemLabel="#{pais.nome}" itemValue="#{pais.id}"></f:selectItems>
 					</p:selectOneMenu>

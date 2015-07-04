@@ -10,13 +10,13 @@ import javax.faces.bean.ViewScoped;
 import br.ufms.cpcx.engweb.petshop.biz.CadastroAnimal;
 import br.ufms.cpcx.engweb.petshop.model.Animal;
 
-@ManagedBean
+@ManagedBean(name="listagemAnimaisMB")
 @ViewScoped
 public class ListagemAnimaisMB {
 	private List<Animal> animais;
 	private boolean mostrarTabela = true;
 	private Long idAnimal;
-//
+	
 	@EJB
 	private CadastroAnimal cadastroAnimal;
 	

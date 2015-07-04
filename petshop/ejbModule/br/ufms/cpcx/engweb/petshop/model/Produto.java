@@ -8,7 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -33,20 +34,24 @@ public class Produto implements Serializable {
     private String tipoUnidade;
     private BigDecimal valorUnitario;
     
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
+ 	@JoinColumn(name = "id_marca")
     private Marca marca;
 
 	//id Foto
-    @OneToOne(optional = true)
+    @ManyToOne(optional = true)
+ 	@JoinColumn(name = "id_foto")
     private Foto foto;
     
     //id categoria
-	@OneToOne(optional = false)
-    private Categoria Categoria;
+    @ManyToOne(optional = false)
+ 	@JoinColumn(name = "id_categoria")
+    private Categoria categoria;
     
     //id fornecedor
-	@OneToOne(optional = false)
-    private Fornecedor Fornecedor;
+    @ManyToOne(optional = false)
+ 	@JoinColumn(name = "id_fornecedor")
+    private Fornecedor fornecedor;
     
 	private Long qtde;
     
@@ -111,19 +116,19 @@ public class Produto implements Serializable {
 	}
 
 	public Categoria getCategoria() {
-		return Categoria;
+		return categoria;
 	}
 
 	public void setCategoria(Categoria categoria) {
-		Categoria = categoria;
+		this.categoria = categoria;
 	}
 
 	public Fornecedor getFornecedor() {
-		return Fornecedor;
+		return fornecedor;
 	}
 
 	public void setFornecedor(Fornecedor fornecedor) {
-		Fornecedor = fornecedor;
+		this.fornecedor = fornecedor;
 	}
 	
     public Marca getMarca() {

@@ -15,7 +15,7 @@
 					<p:inputText value="#{cadastroCidadeMB.cidade.nome}" />
 					
 					<h:outputLabel value="Estado" />
-					<p:selectOneMenu value="#{cadastroCidadeMB.idEstado}">
+					<p:selectOneMenu value="#{cadastroCidadeMB.idEstado}" filter="true" filterMatchMode="startsWith">
 						<f:selectItem itemLabel="Selecione o Estado" itemValue="" />
 						<f:selectItems value="#{cadastroCidadeMB.estados}" var="estado" itemLabel="#{estado.nome}" itemValue="#{estado.id}"></f:selectItems>
 					</p:selectOneMenu>

@@ -24,6 +24,11 @@ public class CadastroFuncionario {
 	public Funcionario buscarFuncionarioPorId(Long id) {
 		return funcionarioDAO.findById(id);
 	}
+	
+	public List<Funcionario> buscarFuncionariosPorIdCargo(Long idCargo) {
+		return funcionarioDAO.buscarFuncionariosPorIdCargo(idCargo);
+	}
+	
 
 	public void removerFuncionario(Funcionario funcionario) {
 		funcionarioDAO.removerFuncionario(funcionario);

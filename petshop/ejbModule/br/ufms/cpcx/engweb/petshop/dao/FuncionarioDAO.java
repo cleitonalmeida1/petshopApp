@@ -37,6 +37,12 @@ public class FuncionarioDAO {
 		Query query = em.createQuery("SELECT nome FROM Funcionario c");
 		return (List<Funcionario>) query.getResultList();
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Funcionario> buscarFuncionariosPorIdCargo(Long idCargo) {
+		Query query = em.createQuery("SELECT c FROM Funcionario c WHERE c.cargo = "+idCargo);
+		return (List<Funcionario>) query.getResultList();
+	}
 
 	
 	public Funcionario findById(Long id) {
